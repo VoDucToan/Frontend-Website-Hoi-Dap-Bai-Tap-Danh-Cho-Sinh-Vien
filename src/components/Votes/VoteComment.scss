@@ -1,0 +1,24 @@
+.vote-comment {
+    margin-right: 10px;
+
+    .amount-votes-comment {
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .arrow-up {
+        color: rgb(202, 205, 209);
+        display: flex;
+
+        &:hover {
+            cursor: pointer;
+            color: rgb(181, 183, 187);
+        }
+    }
+
+    .arrow-up-check {
+        color: rgb(55, 56, 56);
+    }
+
+}

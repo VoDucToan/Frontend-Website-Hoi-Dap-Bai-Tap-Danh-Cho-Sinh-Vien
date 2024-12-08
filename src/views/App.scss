@@ -1,0 +1,23 @@
+.app-container {
+    .header-container {}
+
+    .main-container {
+        display: flex;
+
+        .sidenav-container {
+            span.ps-menu-label.css-12w9als {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                gap: 10px;
+                font-weight: 400;
+            }
+        }
+
+        .app-content {
+            max-width: 60%;
+            width: 100%;
+        }
+    }
+}

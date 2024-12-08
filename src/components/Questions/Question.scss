@@ -1,0 +1,69 @@
+.question-container {
+    padding: 30px 20px;
+
+    .title-question-container {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0dcdc;
+        width: 1100px;
+        display: flex;
+        gap: 30px;
+        justify-content: space-between;
+
+        .title-question-header {
+            h1 {
+                font-size: 26px;
+                font-weight: 400;
+            }
+
+            .interact-question {
+                font-size: 14px;
+
+                .time-asked {
+                    margin-right: 15px;
+
+                    .asked {
+                        color: rgb(145, 147, 148);
+                    }
+                }
+
+                .time-modified {
+                    .modified {
+                        color: rgb(145, 147, 148);
+                    }
+                }
+            }
+        }
+
+        a {
+            height: max-content;
+
+            .btn-customize {
+                width: 90px;
+            }
+        }
+
+    }
+
+    .detail-question-container {
+        margin-top: 15px;
+        display: flex;
+
+        .detail-question {
+            max-width: 800px;
+            width: 100%;
+            margin-left: 10px;
+
+            .content-question {
+                margin-bottom: 20px;
+            }
+
+            .signature-question {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+
+    }
+}

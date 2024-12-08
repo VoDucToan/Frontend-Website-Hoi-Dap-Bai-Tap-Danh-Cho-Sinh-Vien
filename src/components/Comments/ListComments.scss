@@ -1,0 +1,29 @@
+.list-comments-container {
+    border-top: 1px solid #e0dcdc;
+
+    .comment {
+        display: flex;
+        border-bottom: 1px solid #e0dcdc;
+        padding: 5px 0;
+
+
+
+        .content-comment {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .add-comment {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgb(154, 156, 158);
+        margin-top: 5px;
+        width: fit-content;
+
+        &:hover {
+            cursor: pointer;
+            color: rgb(159, 202, 228);
+        }
+    }
+}
