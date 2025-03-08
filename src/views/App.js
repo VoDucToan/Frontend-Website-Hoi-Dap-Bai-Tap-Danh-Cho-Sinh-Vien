@@ -2,20 +2,18 @@ import './App.scss';
 import Header from '../components/Header/Header';
 import { Outlet } from 'react-router-dom';
 import SideBar from '../components/SideBar/SideBar';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getAccount } from '../services/apiUserService';
-import { AuthContext } from '../components/Context/authContext';
+import { useSelector, useDispatch } from 'react-redux'
+import { setAuth } from '../store/slices/authSlice';
 
-const App = () => {
-  const { setAuth } = useContext(AuthContext);
+const App = (props) => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchAccount = async () => {
       let data = await getAccount();
-      setAuth({
-        isAuthenticated: true,
-        user: data
-      });
+      dispatch(setAuth(data));
     }
     fetchAccount();
   }, [])

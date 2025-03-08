@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './ListTags.scss';
-import { getListTags } from '../../services/apiTagService';
+import { getListTagsByQuestion } from '../../services/apiTagService';
 
 const ListTags = (props) => {
     const { idQuestion } = props;
@@ -8,7 +8,7 @@ const ListTags = (props) => {
 
     useEffect(() => {
         const fetchListTags = async () => {
-            const data = await getListTags(idQuestion);
+            const data = await getListTagsByQuestion(idQuestion);
             setListTags(data.DT);
         }
         fetchListTags();

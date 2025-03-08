@@ -4,8 +4,8 @@ import VotePost from "../Votes/VotePost";
 import './ListAnswers.scss';
 import { getListAnswers, getNumberAnswers, handleCreateAnswer } from "../../services/apiAnswerService";
 import Editor from "../../utils/Editor/Editor";
-import { getAccount } from "../../services/apiUserService";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const ListAnswers = (props) => {
     const { idQuestion } = props;
@@ -18,8 +18,8 @@ const ListAnswers = (props) => {
     }
 
     const createAnswer = async () => {
-        const account = await getAccount();
-        const data = await handleCreateAnswer(account.id, idQuestion, contentAnswer);
+        const idUser = useSelector(state => state.auth.user.id);
+        const data = await handleCreateAnswer(idUser, idQuestion, contentAnswer);
         if (data && data.EC === 0) {
             const data = await getListAnswers(idQuestion);
             setListAnswers(data);

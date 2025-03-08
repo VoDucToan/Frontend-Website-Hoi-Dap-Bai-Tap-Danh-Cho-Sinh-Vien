@@ -4,7 +4,7 @@ import ListTags from "../Tags/ListTags";
 import VotePost from "../Votes/VotePost";
 
 const DetailQuestion = (props) => {
-    const { detailQuestion, idPost } = props;
+    const { detailQuestion, idPost, imageName } = props;
     useEffect(() => {
         document.getElementById("id-content-question").innerHTML = detailQuestion;
     }, [detailQuestion])
@@ -15,6 +15,7 @@ const DetailQuestion = (props) => {
             </div>
             <div className="detail-question">
                 <div className="content-question" id="id-content-question"></div>
+                {imageName && <img src={`http://localhost:8080/images/uploads/${imageName}`} className='img-thumbnail' />}
                 <ListTags idQuestion={idPost} />
                 <div className="signature-question">
                     <div className="option-question">

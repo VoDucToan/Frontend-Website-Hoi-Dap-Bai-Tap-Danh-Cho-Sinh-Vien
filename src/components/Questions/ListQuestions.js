@@ -3,7 +3,6 @@ import { getListQuestions } from '../../services/apiQuestionService';
 import './ListQuestions.scss'
 import { getNumberVotesPost } from "../../services/apiVoteService";
 import { getNumberAnswers } from "../../services/apiAnswerService";
-import { getListTags } from "../../services/apiTagService";
 import { getNameUser } from "../../services/apiUserService";
 import { Link, Outlet } from 'react-router-dom';
 import ListTags from "../Tags/ListTags";

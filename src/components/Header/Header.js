@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,21 +5,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../Context/authContext';
+import { useSelector, useDispatch } from 'react-redux'
+import { resetAuth } from '../../store/slices/authSlice';
 
 const Header = () => {
-
-    const { auth, setAuth } = useContext(AuthContext);
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     const handleLogout = () => {
         localStorage.clear("access_token");
-        setAuth({
-            isAuthenticated: false,
-            user: {
-                email: "",
-                name: ""
-            }
-        })
+        dispatch(resetAuth());
     }
 
     return (

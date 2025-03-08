@@ -8,28 +8,26 @@ import { LuUsers } from "react-icons/lu";
 
 const SideBar = () => {
     return (
-        <div>
-            <Sidebar>
-                <Menu>
-                    <MenuItem component={<Link to="/" />}>
-                        <MdHome /> Home
-                    </MenuItem>
-                    <MenuItem component={<Link to="/questions" />}>
-                        <BsQuestionCircle /> Questions </MenuItem>
-                    <MenuItem component={<Link to="/tags" />}><IoMdPricetags /> Tags
-                    </MenuItem>
-                    <MenuItem component={<Link to="/user/saves" />}>
-                        <AiOutlineSave />Saves
-                    </MenuItem>
-                    <MenuItem component={<Link to="/users" />}>
-                        <LuUsers /> Users
-                    </MenuItem>
-                    {/* <MenuItem component={<Link to="/admin" />}>
+        <Sidebar>
+            <Menu>
+                <MenuItem component={<Link to="/" />}>
+                    <MdHome /> Home
+                </MenuItem>
+                <MenuItem component={<Link to="/questions" />}>
+                    <BsQuestionCircle /> Questions </MenuItem>
+                <MenuItem component={<Link to="/tags" />}><IoMdPricetags /> Tags
+                </MenuItem>
+                <MenuItem component={<Link to="/user/saves" />}>
+                    <AiOutlineSave />Saves
+                </MenuItem>
+                <MenuItem component={<Link to="/users" />}>
+                    <LuUsers /> Users
+                </MenuItem>
+                {/* <MenuItem component={<Link to="/admin" />}>
                         Admin
                     </MenuItem> */}
-                </Menu>
-            </Sidebar>
-        </div>
+            </Menu>
+        </Sidebar>
     )
 }
 

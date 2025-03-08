@@ -1,10 +1,18 @@
 .app-container {
-    .header-container {}
+    .header-container {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
 
     .main-container {
         display: flex;
 
         .sidenav-container {
+            height: calc(100vh - 56px);
+            position: sticky;
+            top: 56px;
+
             span.ps-menu-label.css-12w9als {
                 display: flex;
                 align-items: center;

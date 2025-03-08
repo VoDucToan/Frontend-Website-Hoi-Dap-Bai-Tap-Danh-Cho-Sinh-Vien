@@ -5,13 +5,15 @@ import {
     getNumberVotesComment, getVoteTypeComment, handleIncreaseVoteComment,
     handleUnvoteComment
 } from "../../services/apiVoteService";
-import { getAccount } from "../../services/apiUserService";
+import { useSelector } from "react-redux";
 
 const VoteComment = (props) => {
     const { idComment } = props;
     const [numberVotes, setNumberVotes] = useState(0);
     const [voteType, setVoteType] = useState(0)
     const [voteTypeInitial, setVoteTypeInitial] = useState(false)
+
+    const idUser = useSelector(state => state.auth.user.id);
 
     const increaseVote = () => {
         if (voteType === 1) {
@@ -24,8 +26,7 @@ const VoteComment = (props) => {
 
     useEffect(() => {
         const fetchVoteType = async () => {
-            const account = await getAccount();
-            const data = await getVoteTypeComment(idComment, account.id);
+            const data = await getVoteTypeComment(idComment, idUser);
             setVoteType(data.DT);
             setVoteTypeInitial(true);
         }
@@ -35,13 +36,12 @@ const VoteComment = (props) => {
     useEffect(() => {
         if (voteTypeInitial) {
             const fetchNumberVotes = async () => {
-                const account = await getAccount();
                 if (voteType === 0) {
-                    await handleUnvoteComment(idComment, account.id);
+                    await handleUnvoteComment(idComment, idUser);
                 }
                 else if (voteType === 1) {
-                    await handleUnvoteComment(idComment, account.id);
-                    await handleIncreaseVoteComment(idComment, account.id, voteType)
+                    await handleUnvoteComment(idComment, idUser);
+                    await handleIncreaseVoteComment(idComment, idUser, voteType)
                 }
                 const data = await getNumberVotesComment(idComment);
                 setNumberVotes(data.DT);

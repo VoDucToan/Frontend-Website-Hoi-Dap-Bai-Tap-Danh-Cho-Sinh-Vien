@@ -9,13 +9,16 @@ import { getQuestions } from "../../services/apiQuestionService";
 const Question = (props) => {
     const [titleQuestion, setTitleQuestion] = useState("");
     const [detailQuestion, setDetailQuestion] = useState("");
+    const [imageName, setImageName] = useState("");
     const { idpost } = useParams();
 
     useEffect(() => {
         const fetchTitleQuestion = async () => {
             const data = await getQuestions(idpost);
+            console.log('data', data);
             setTitleQuestion(data.DT.post_title);
             setDetailQuestion(data.DT.post_details);
+            setImageName(data.DT.post_image);
         }
         fetchTitleQuestion();
     }, [])
@@ -23,7 +26,8 @@ const Question = (props) => {
     return (
         <div className="question-container">
             <TitleQuestion titleQuestion={titleQuestion} />
-            <DetailQuestion detailQuestion={detailQuestion} idPost={idpost} />
+            <DetailQuestion detailQuestion={detailQuestion} idPost={idpost}
+                imageName={imageName} />
             <ListAnswers idQuestion={idpost} />
         </div>
     )

@@ -15,9 +15,10 @@ import Register from './components/Auth/Register';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Auth/Login';
-import { AuthWrapper } from './components/Context/authContext';
 import Question from './components/Questions/Question';
 import AskQuestion from './components/Questions/AskQuestion';
+import { Provider } from 'react-redux'
+import store from './store/store';
 
 const router = createBrowserRouter([
   {
@@ -60,10 +61,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthWrapper>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </AuthWrapper>
-
+    </Provider>
     <ToastContainer />
   </React.StrictMode>
 );

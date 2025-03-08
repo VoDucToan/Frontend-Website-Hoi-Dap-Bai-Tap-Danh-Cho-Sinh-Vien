@@ -5,14 +5,16 @@ import { MdHistory } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { getNumberVotesPost, getVoteTypePost, handleDecreaseVotePost, handleIncreaseVotePost, handleUnvotePost } from "../../services/apiVoteService";
 import { useParams } from "react-router-dom";
-import { getAccount } from "../../services/apiUserService";
 import './VotePost.scss';
+import { useSelector } from "react-redux";
 
 const VotePost = (props) => {
     const { idpost } = props;
     const [numberVotes, setNumberVotes] = useState(0)
     const [voteType, setVoteType] = useState(0)
     const [voteTypeInitial, setVoteTypeInitial] = useState(false)
+
+    const idUser = useSelector(state => state.auth.user.id);
 
     const increaseVote = () => {
         if (voteType === 1) {
@@ -34,8 +36,7 @@ const VotePost = (props) => {
 
     useEffect(() => {
         const fetchVoteType = async () => {
-            const account = await getAccount();
-            const data = await getVoteTypePost(idpost, account.id);
+            const data = await getVoteTypePost(idpost, idUser);
             setVoteType(data.DT);
             setVoteTypeInitial(true);
         }
@@ -45,17 +46,16 @@ const VotePost = (props) => {
     useEffect(() => {
         if (voteTypeInitial) {
             const fetchNumberVotes = async () => {
-                const account = await getAccount();
                 if (voteType === 0) {
-                    await handleUnvotePost(idpost, account.id);
+                    await handleUnvotePost(idpost, idUser);
                 }
                 else if (voteType === 1) {
-                    await handleUnvotePost(idpost, account.id);
-                    await handleIncreaseVotePost(idpost, account.id, voteType);
+                    await handleUnvotePost(idpost, idUser);
+                    await handleIncreaseVotePost(idpost, idUser, voteType);
                 }
                 else if (voteType === 2) {
-                    await handleUnvotePost(idpost, account.id);
-                    await handleDecreaseVotePost(idpost, account.id, voteType);
+                    await handleUnvotePost(idpost, idUser);
+                    await handleDecreaseVotePost(idpost, idUser, voteType);
                 }
                 const data = await getNumberVotesPost(idpost)
                 setNumberVotes(data.DT);
