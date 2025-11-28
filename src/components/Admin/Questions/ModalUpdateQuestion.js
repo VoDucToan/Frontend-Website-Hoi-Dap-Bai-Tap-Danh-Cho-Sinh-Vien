@@ -3,10 +3,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UploadAndDisplayImage from '../../../utils/UploadImage/UploadAndDisplayImage';
 import Editor from '../../../utils/Editor/Editor';
-import { deleteTagsQuestion, getListTags, getListTagsByQuestion, InsertTagsQuestion } from '../../../services/apiTagService';
+import { getListTags, getListTagsByQuestion } from '../../../services/apiTagService';
 import { getImagesPost, updateQuestion } from '../../../services/apiQuestionService';
 import { toast } from 'react-toastify';
-// import $ from 'jquery';
 
 function ModalUpdateQuestion(props) {
     const { title, detail, status, id, resetPage } = props;
@@ -52,8 +51,10 @@ function ModalUpdateQuestion(props) {
                 const valueSelected = dataListTagsByQuestion?.DT?.map((tag) => {
                     return tag.id;
                 })
-                $('#multiple-select-field').val(valueSelected);
-                $('#multiple-select-field').trigger('change'); // Notify any JS components that the value changed
+                const $ = window.$;
+                const $sel = $('#multiple-select-field');
+                $sel('#multiple-select-field').val(valueSelected);
+                $sel('#multiple-select-field').trigger('change'); // Notify any JS components that the value changed
             }
         }
         const fetchImagesQuestion = async () => {
@@ -114,7 +115,9 @@ function ModalUpdateQuestion(props) {
     }
 
     const handleSaveChanges = async () => {
-        let el = $('#multiple-select-field').select2('data');
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        let el = $sel('#multiple-select-field').select2('data');
         const isValidate = validateAskQuestion(el);
         if (!isValidate) {
             return;
@@ -134,36 +137,38 @@ function ModalUpdateQuestion(props) {
         }
     }
 
-    // useEffect(() => {
-    //     $('#multiple-select-field').select2({
-    //         theme: "bootstrap-5",
-    //         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-    //         placeholder: $(this).data('placeholder'),
-    //         closeOnSelect: false,
-    //     }, [show]);
-    // })
-
     useEffect(() => {
-        if (typeof window !== 'undefined' && window.$) {
-            const $ = window.$;
-            const $sel = $('#multiple-select-field');
-            // initialize select2 if element exists
-            if ($sel.length) {
-                $sel.select2({
-                    theme: "bootstrap-5",
-                    width: $sel.data('width') ? $sel.data('width') : $sel.hasClass('w-100') ? '100%' : 'style',
-                    placeholder: $sel.data('placeholder'),
-                    closeOnSelect: false,
-                });
-            }
-            // cleanup on unmount / re-run
-            return () => {
-                if ($sel && $sel.data('select2')) {
-                    $sel.select2('destroy');
-                }
-            }
-        }
-    }, [show, listTags, idQuestion]);
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        $sel('#multiple-select-field').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: false,
+        });
+    }, [show])
+
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined' && window.$) {
+    //         const $ = window.$;
+    //         const $sel = $('#multiple-select-field');
+    //         // initialize select2 if element exists
+    //         if ($sel.length) {
+    //             $sel.select2({
+    //                 theme: "bootstrap-5",
+    //                 width: $sel.data('width') ? $sel.data('width') : $sel.hasClass('w-100') ? '100%' : 'style',
+    //                 placeholder: $sel.data('placeholder'),
+    //                 closeOnSelect: false,
+    //             });
+    //         }
+    //         // cleanup on unmount / re-run
+    //         return () => {
+    //             if ($sel && $sel.data('select2')) {
+    //                 $sel.select2('destroy');
+    //             }
+    //         }
+    //     }
+    // }, [show, listTags, idQuestion]);
 
     return (
         <>
