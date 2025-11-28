@@ -134,14 +134,36 @@ function ModalUpdateQuestion(props) {
         }
     }
 
+    // useEffect(() => {
+    //     $('#multiple-select-field').select2({
+    //         theme: "bootstrap-5",
+    //         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+    //         placeholder: $(this).data('placeholder'),
+    //         closeOnSelect: false,
+    //     }, [show]);
+    // })
+
     useEffect(() => {
-        $('#multiple-select-field').select2({
-            theme: "bootstrap-5",
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            placeholder: $(this).data('placeholder'),
-            closeOnSelect: false,
-        }, [show]);
-    })
+        if (typeof window !== 'undefined' && window.$) {
+            const $ = window.$;
+            const $sel = $('#multiple-select-field');
+            // initialize select2 if element exists
+            if ($sel.length) {
+                $sel.select2({
+                    theme: "bootstrap-5",
+                    width: $sel.data('width') ? $sel.data('width') : $sel.hasClass('w-100') ? '100%' : 'style',
+                    placeholder: $sel.data('placeholder'),
+                    closeOnSelect: false,
+                });
+            }
+            // cleanup on unmount / re-run
+            return () => {
+                if ($sel && $sel.data('select2')) {
+                    $sel.select2('destroy');
+                }
+            }
+        }
+    }, [show, listTags, idQuestion]);
 
     return (
         <>
