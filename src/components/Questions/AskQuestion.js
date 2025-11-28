@@ -156,7 +156,7 @@ const AskQuestion = (props) => {
             </div>
             <button type="button" className="btn btn-primary d-block mt-3" onClick={() => handleSubmitQuestion()}>Gửi câu hỏi</button>
             <button type="button" className="btn btn-danger mt-3" onClick={() => {
-                const isConfirm = confirm("Xác nhận xóa bản nháp này?");
+                const isConfirm = window.confirm("Xác nhận xóa bản nháp này?");
                 if (isConfirm) {
                     clearPage()
                 }
