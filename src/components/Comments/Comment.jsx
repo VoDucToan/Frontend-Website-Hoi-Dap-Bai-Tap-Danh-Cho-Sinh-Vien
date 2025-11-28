@@ -61,7 +61,7 @@ const Comment = (props) => {
     }
 
     const handleDeleteComment = async () => {
-        const reply = confirm("Bạn muốn xóa bình luận này?");
+        const reply = window.confirm("Bạn muốn xóa bình luận này?");
         if (reply) {
             const res = await deleteComment(comment.id)
             if (res && res.EC === 0) {

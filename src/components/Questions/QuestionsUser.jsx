@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import QuestionUser from "./QuestionUser";
 import './QuestionsUser.scss';
 import ReactPaginate from "react-paginate";
+import _ from "lodash";
 
 const QuestionsUser = () => {
     const [user] = useOutletContext();

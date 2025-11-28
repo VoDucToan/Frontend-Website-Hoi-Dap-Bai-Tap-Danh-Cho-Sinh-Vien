@@ -7,6 +7,7 @@ import { updateUser } from '../../services/apiUserService';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../store/slices/authSlice';
+import _ from 'lodash';
 
 const EditProfile = (props) => {
     const [user, fetchUser] = useOutletContext();

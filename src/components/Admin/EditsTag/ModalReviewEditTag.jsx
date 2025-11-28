@@ -3,28 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import VotePost from '../../Votes/VotePost';
-import ListComments from '../../Comments/ListComments';
-import MetaAuthor from '../../Users/MetaAuthor';
 import './ModalReviewEditTag.scss';
-import SummaryTitleQuestion from '../../Questions/SummaryTitleQuestion';
-import { getImagesPost, getQuestions } from '../../../services/apiQuestionService';
-import avatarAuthor from '../../../assets/images/auth/login.jpg';
 import { getUser } from '../../../services/apiUserService';
 import _ from 'lodash';
 import htmldiff from '../../../utils/HTMLDiff/htmldiff';
 import '../../../utils/HTMLDiff/htmldiff.scss';
-import { createRoot } from 'react-dom/client';
-import { flushSync } from 'react-dom';
-import { getListTagsByEdit, getListTagsByQuestion, getTag } from '../../../services/apiTagService';
-import logoUTE from '../../../assets/images/auth/login.jpg';
-import { approveEditForPost, getEditPost, getImagesEdit, rejectEditForPost } from '../../../services/apiEditPostService';
+import { getTag } from '../../../services/apiTagService';
 import ProposedAuthor from '../../Users/ProposedAuthor';
-import ListAnswers from '../../Answer/ListAnswers';
-import Follow from '../../Post/Follow';
 import { toast } from 'react-toastify';
-import { renderToString } from 'react-dom/server';
-import { MemoryRouter } from 'react-router-dom';
 import Tag from '../../Tags/Tag';
 import { approveEditForTag, getEditTag, getImagesForEditTag, rejectEditForTag } from '../../../services/apiEditTagService';
 
@@ -140,7 +126,7 @@ function ModalReviewEditTag(props) {
     }
 
     const handleReject = async () => {
-        const reply = confirm("Bạn muốn từ chối chỉnh sửa này?");
+        const reply = window.confirm("Bạn muốn từ chối chỉnh sửa này?");
         if (reply) {
             const res = await rejectEditForTag(idEdit, editedByUser, "Chỉnh sửa",
                 "Bản chỉnh sửa của bạn bị từ chối", `/edit-tag-wiki/${idTag}`);
@@ -155,7 +141,7 @@ function ModalReviewEditTag(props) {
     }
 
     const handleApprove = async () => {
-        const reply = confirm("Bạn muốn chấp nhận chỉnh sửa này?");
+        const reply = window.confirm("Bạn muốn chấp nhận chỉnh sửa này?");
         if (reply) {
             const res = await approveEditForTag(idEdit, editedByUser, "Chỉnh sửa",
                 "Bản chỉnh sửa của bạn được chấp nhận", `/tags/${idTag}/info`);

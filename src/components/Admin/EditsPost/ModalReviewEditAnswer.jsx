@@ -134,7 +134,7 @@ function ModalReviewEditAnswer(props) {
     }
 
     const handleReject = async () => {
-        const reply = confirm("Bạn muốn từ chối chỉnh sửa này?");
+        const reply = window.confirm("Bạn muốn từ chối chỉnh sửa này?");
         if (reply) {
             const res = await rejectEditForPost(idEdit, editedByUser, "Chỉnh sửa",
                 "Bản chỉnh sửa của bạn bị từ chối", `/posts/${idAnswer}/edit`);
@@ -149,7 +149,7 @@ function ModalReviewEditAnswer(props) {
     }
 
     const handleApprove = async () => {
-        const reply = confirm("Bạn muốn chấp nhận chỉnh sửa này?");
+        const reply = window.confirm("Bạn muốn chấp nhận chỉnh sửa này?");
         if (reply) {
             const res = await approveEditForPost(idEdit, editedByUser, "Chỉnh sửa",
                 "Bản chỉnh sửa của bạn được chấp nhận", `/questions/${question.id}`);

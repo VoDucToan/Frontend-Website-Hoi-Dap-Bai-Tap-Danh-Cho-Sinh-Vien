@@ -73,7 +73,7 @@ const ModalEditListSave = (props) => {
             navigate(`/users/saves/${idUser}`);
         }
         else {
-            toast.error(data.EM);
+            toast.error(res.EM);
         }
     }
 

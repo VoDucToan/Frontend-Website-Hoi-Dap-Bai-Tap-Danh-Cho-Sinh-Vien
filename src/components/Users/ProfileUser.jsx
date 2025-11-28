@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getAmountQuestionsByUser } from '../../services/apiQuestionService';
 import { toast } from 'react-toastify';
 import { getAmountAnswersByUser } from '../../services/apiAnswerService';
+import _ from 'lodash';
 
 const ProfileUser = () => {
     const [user] = useOutletContext();

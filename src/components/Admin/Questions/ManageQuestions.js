@@ -72,7 +72,7 @@ const ManageQuestions = () => {
     }
 
     const handleDeleteQuestion = async (idQuestion) => {
-        const isConfirm = confirm("Xác nhận xóa câu hỏi này?");
+        const isConfirm = window.confirm("Xác nhận xóa câu hỏi này?");
         if (isConfirm) {
             const data = await deleteQuestion(idQuestion);
             if (data && data.EC === 0) {

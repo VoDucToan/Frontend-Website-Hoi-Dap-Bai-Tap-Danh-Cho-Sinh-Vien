@@ -100,7 +100,7 @@ const CreateTag = () => {
                 onClick={() => handleSubmitTag()}>Gửi thẻ</button>
             <button type="button" className="btn btn-danger mt-3"
                 onClick={() => {
-                    const isConfirm = confirm("Xác nhận xóa bản nháp này?");
+                    const isConfirm = window.confirm("Xác nhận xóa bản nháp này?");
                     if (isConfirm) {
                         clearPage()
                     }

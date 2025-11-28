@@ -6,6 +6,7 @@ import Editor from '../../../utils/Editor/Editor';
 import { deleteTagsQuestion, getListTags, getListTagsByQuestion, InsertTagsQuestion } from '../../../services/apiTagService';
 import { getImagesPost, updateQuestion } from '../../../services/apiQuestionService';
 import { toast } from 'react-toastify';
+// import $ from 'jquery';
 
 function ModalUpdateQuestion(props) {
     const { title, detail, status, id, resetPage } = props;
@@ -133,12 +134,14 @@ function ModalUpdateQuestion(props) {
         }
     }
 
-    $('#multiple-select-field').select2({
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        placeholder: $(this).data('placeholder'),
-        closeOnSelect: false,
-    });
+    useEffect(() => {
+        $('#multiple-select-field').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: false,
+        }, [show]);
+    })
 
     return (
         <>
