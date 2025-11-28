@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions, no-undef */
 /**
  * htmldiff.js a diff algorithm that understands HTML, and produces HTML in the browser.
  * 

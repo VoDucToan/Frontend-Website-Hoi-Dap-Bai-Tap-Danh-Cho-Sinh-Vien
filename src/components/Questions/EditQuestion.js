@@ -87,8 +87,10 @@ const EditQuestion = (props) => {
                 return tag.id;
             })
             if (valueSelected) {
-                $('#multiple-select-field').val(valueSelected);
-                $('#multiple-select-field').trigger('change'); // Notify any JS components that the value changed
+                const $ = window.$;
+                const $sel = $('#multiple-select-field');
+                $sel.val(valueSelected);
+                $sel.trigger('change'); // Notify any JS components that the value changed
             }
         }
 
@@ -154,7 +156,9 @@ const EditQuestion = (props) => {
     }
 
     const handleSaveChanges = async () => {
-        let el = $('#multiple-select-field').select2('data');
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        let el = $sel.select2('data');
         const isValidate = validateEditQuestion(el);
         if (!isValidate) {
             return;
@@ -188,12 +192,18 @@ const EditQuestion = (props) => {
         }
     }
 
-    $('#multiple-select-field').select2({
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        placeholder: $(this).data('placeholder'),
-        closeOnSelect: false,
-    });
+    useEffect(() => {
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        $sel.select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: false,
+        });
+    }, [])
+
+
 
     return (
         <div className="edit-question-container">

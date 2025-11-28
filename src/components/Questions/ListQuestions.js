@@ -54,14 +54,17 @@ const ListQuestions = (props) => {
     }, [page, limit])
 
     useEffect(() => {
-        $('#multiple-select-field-following-tags').select2({
+        const $ = window.$;
+        const $selFollowing = $('#multiple-select-field-following-tags');
+        $selFollowing.select2({
             theme: "bootstrap-5",
             width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
             placeholder: $(this).data('placeholder'),
             closeOnSelect: false,
         });
 
-        $('#multiple-select-field-ignored-tags').select2({
+        const $selIgnored = $('#multiple-select-field-ignored-tags');
+        $selIgnored.select2({
             theme: "bootstrap-5",
             width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
             placeholder: $(this).data('placeholder'),
@@ -150,7 +153,10 @@ const ListQuestions = (props) => {
             return;
         }
 
-        let arrWatchedTags = $('#multiple-select-field-following-tags').select2('data');
+        const $ = window.$;
+
+        const $selFollowing = $('#multiple-select-field-following-tags');
+        let arrWatchedTags = $selFollowing.select2('data');
         arrWatchedTags = arrWatchedTags.map((tag) => {
             return tag.id;
         })
@@ -158,7 +164,9 @@ const ListQuestions = (props) => {
         if (arrWatchedTags && arrWatchedTags.length > 0) {
             watchedTags = `(${arrWatchedTags.join(',')})`;
         }
-        let arrIgnoredTags = $('#multiple-select-field-ignored-tags').select2('data');
+
+        const $selIgnored = $('#multiple-select-field-ignored-tags');
+        let arrIgnoredTags = $selIgnored.select2('data');
         arrIgnoredTags = arrIgnoredTags.map((tag) => {
             return tag.id;
         })

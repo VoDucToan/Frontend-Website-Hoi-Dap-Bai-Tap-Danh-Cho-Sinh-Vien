@@ -148,28 +148,6 @@ function ModalUpdateQuestion(props) {
         });
     }, [show])
 
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined' && window.$) {
-    //         const $ = window.$;
-    //         const $sel = $('#multiple-select-field');
-    //         // initialize select2 if element exists
-    //         if ($sel.length) {
-    //             $sel.select2({
-    //                 theme: "bootstrap-5",
-    //                 width: $sel.data('width') ? $sel.data('width') : $sel.hasClass('w-100') ? '100%' : 'style',
-    //                 placeholder: $sel.data('placeholder'),
-    //                 closeOnSelect: false,
-    //             });
-    //         }
-    //         // cleanup on unmount / re-run
-    //         return () => {
-    //             if ($sel && $sel.data('select2')) {
-    //                 $sel.select2('destroy');
-    //             }
-    //         }
-    //     }
-    // }, [show, listTags, idQuestion]);
-
     return (
         <>
             <button className="btn btn-warning me-2" onClick={handleShow}>Cập Nhật</button>

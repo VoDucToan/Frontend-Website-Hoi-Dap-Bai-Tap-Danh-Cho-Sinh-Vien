@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import { createQuestion } from '../../services/apiQuestionService';
 import { useSelector } from "react-redux";
 import { getListTags, InsertTagsQuestion } from '../../services/apiTagService';
-import { useNavigate } from 'react-router-dom';
 
 const AskQuestion = (props) => {
     const [titleQuestion, setTitleQuestion] = useState("");
@@ -82,11 +81,15 @@ const AskQuestion = (props) => {
         setTryExpect("");
         setImageQuestions([]);
         setResetPage(Math.random());
-        $('#multiple-select-field').val(null).trigger('change');
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        $sel.val(null).trigger('change');
     }
 
     const handleSubmitQuestion = async () => {
-        let el = $('#multiple-select-field').select2('data');
+        const $ = window.$;
+        const $sel = $('#multiple-select-field');
+        let el = $sel.select2('data');
 
         const isValidate = validateAskQuestion(el);
         if (!isValidate) {
@@ -108,7 +111,9 @@ const AskQuestion = (props) => {
         }
     }
 
-    $('#multiple-select-field').select2({
+    const $ = window.$;
+    const $sel = $('#multiple-select-field');
+    $sel.select2({
         theme: "bootstrap-5",
         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
         placeholder: $(this).data('placeholder'),

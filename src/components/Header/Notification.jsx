@@ -60,7 +60,9 @@ const Notification = () => {
                 toast.error(res.EM);
             }
         }
-        $('#idIconNotification').dropdown('toggle');
+        const $ = window.$;
+        const $sel = $('#idIconNotification');
+        $sel.dropdown('toggle');
     }
 
     const handleMarkAllRead = async () => {
