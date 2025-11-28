@@ -1,0 +1,21 @@
+.items-saved-container {
+    .header-items-saved {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .stats-items-saved {
+        margin-bottom: 10px;
+
+        .amount-items-saved {
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+
+    .content-items-saved {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+}

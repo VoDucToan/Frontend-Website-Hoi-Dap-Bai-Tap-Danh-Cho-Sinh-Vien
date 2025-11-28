@@ -1,0 +1,15 @@
+.detail-question-container {
+    margin-top: 15px;
+    display: flex;
+
+    .detail-question {
+        margin-left: 10px;
+        flex-grow: 1;
+
+        .content-question {
+            margin-bottom: 20px;
+        }
+    }
+
+
+}

@@ -1,0 +1,23 @@
+.proposed-author {
+    .datetime-asked {
+        color: #898f95
+    }
+
+    .img-avatar-author {
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .name-author {
+        color: #09a0ef;
+
+        &:hover {
+            cursor: pointer;
+            color: #0675b0;
+        }
+    }
+}

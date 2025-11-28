@@ -1,0 +1,15 @@
+.votes-user-container {
+    .head-votes-user {
+        margin-bottom: 10px;
+
+        .amount-votes-user {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+    .vote-user {
+        border: 1px solid #adb5bd;
+        border-radius: 5px;
+    }
+}

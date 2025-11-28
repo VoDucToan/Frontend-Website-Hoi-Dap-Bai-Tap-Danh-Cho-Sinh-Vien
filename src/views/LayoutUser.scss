@@ -1,0 +1,130 @@
+.user-container {
+    .header-container {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+    }
+
+    .main-user-container {
+        display: flex;
+        max-width: 1264px;
+        width: 100%;
+        margin: 0 auto;
+
+        .sidenav-user-container {
+            height: calc(100vh - 56px);
+            position: sticky;
+            top: 56px;
+            overflow-y: auto;
+
+            span.ps-menu-label.css-12w9als {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                font-size: 17px;
+                gap: 8px;
+                font-weight: 400;
+            }
+        }
+
+        .app-content {
+            width: calc(100% - 164px);
+            padding: 20px;
+            max-width: 1100px;
+        }
+    }
+
+    .footer-container {
+        background: #212529;
+        padding: 20px;
+
+        .content-footer {
+            max-width: 1264px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+
+            .company-footer {
+                flex-basis: 250px;
+
+                .name-company {
+                    font-size: 16px;
+                    font-weight: 800;
+                    color: white;
+                }
+
+                .purpose-company {
+                    color: white;
+                    font-size: 14px;
+                }
+            }
+
+            .business-footer {
+                flex-basis: fit-content;
+
+                .term-business {
+                    font-size: 16px;
+                    font-weight: 800;
+                    color: white;
+                }
+
+                .help-business {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+
+                .rule-business {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+
+                .contribute-business {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+            }
+
+            .contact-footer {
+                flex-basis: 250px;
+
+                .text-contact {
+                    font-size: 16px;
+                    font-weight: 800;
+                    color: white;
+                }
+
+                .address-contact {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+
+                .mail-contact {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+
+                .phone-number-contact {
+                    color: white;
+                    font-size: 14px;
+                    display: block;
+                }
+            }
+        }
+
+        .copyright-footer {
+            text-align: center;
+            margin-top: 20px;
+
+            .text-copyright {
+                color: white;
+                font-size: 14px;
+            }
+        }
+    }
+}

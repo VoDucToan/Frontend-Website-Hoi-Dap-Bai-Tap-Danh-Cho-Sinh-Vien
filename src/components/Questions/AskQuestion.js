@@ -1,26 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import Editor from '../../utils/Editor/Editor';
 import UploadAndDisplayImage from '../../utils/UploadImage/UploadAndDisplayImage';
 import './AskQuestion.scss'
 import { toast } from 'react-toastify';
 import { createQuestion } from '../../services/apiQuestionService';
 import { useSelector } from "react-redux";
-import { getListTags } from '../../services/apiTagService';
+import { getListTags, InsertTagsQuestion } from '../../services/apiTagService';
+import { useNavigate } from 'react-router-dom';
 
 const AskQuestion = (props) => {
     const [titleQuestion, setTitleQuestion] = useState("");
     const [detailProblem, setDetailProblem] = useState("");
+    const [plainTextDetailProblem, setPlainTextDetailProblem] = useState("");
     const [tryExpect, setTryExpect] = useState("");
-    const [imageQuestion, setImageQuestion] = useState({});
-    const [tagQuestion, setTagQuestion] = useState("");
+    const [plainTextTryExpect, setPlainTextTryExpect] = useState("");
+    const [imageQuestions, setImageQuestions] = useState([]);
     const [listTags, setListTags] = useState([]);
+    const [resetPage, setResetPage] = useState(1);
 
     const idUser = useSelector(state => state.auth.user.id);
 
     useEffect(() => {
         const fetchListTags = async () => {
             const data = await getListTags();
-            setListTags(data);
+            if (data && data.EC === 0) {
+                setListTags(data.DT);
+            }
         }
         fetchListTags();
     }, [])
@@ -39,50 +44,68 @@ const AskQuestion = (props) => {
     }
 
     const getImage = (image) => {
-        setImageQuestion(image);
+        setImageQuestions(image);
     }
 
-    const getTagQuestion = (e) => {
-        setTagQuestion(e.target.value);
+    const getPlainTextEditor = (plainText, id) => {
+        if (id === 1) {
+            setPlainTextDetailProblem(plainText);
+        }
+        else if (id === 2) {
+            setPlainTextTryExpect(plainText);
+        }
     }
 
-    // const validateAskQuestion = () => {
-    //     if (titleQuestion.length < 15) {
-    //         toast.error("Tiêu đề phải chứa ít nhất 15 ký tự")
-    //         return false;
-    //     }
-    //     if (detailProblem.length < 20) {
-    //         toast.error("Mô tả chi tiết vấn đề phải chứa ít nhất 20 ký tự")
-    //         return false;
-    //     }
-    //     if (tryExpect.length < 20) {
-    //         toast.error("Mô tả chi tiết vấn đề phải chứa ít nhất 20 ký tự")
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    const validateAskQuestion = (listTagsChoice) => {
+        if (titleQuestion.length < 15) {
+            toast.error("Tiêu đề phải chứa ít nhất 15 ký tự")
+            return false;
+        }
+        if (plainTextDetailProblem.length < 20) {
+            toast.error("Mô tả chi tiết vấn đề phải chứa ít nhất 20 ký tự")
+            return false;
+        }
+        if (plainTextTryExpect.length < 20) {
+            toast.error("Mô tả cách đã thử và kết quả mong đợi phải chứa ít nhất 20 ký tự")
+            return false;
+        }
+        if (listTagsChoice.length < 1) {
+            toast.error("Câu hỏi phải chứa ít nhất một thẻ mô tả chủ đề");
+            return false;
+        }
+        return true;
+    }
 
-    // const resetQuestion = () => {
-    //     setTitleQuestion("");
-
-    // }
+    const clearPage = () => {
+        setTitleQuestion("");
+        setDetailProblem("");
+        setTryExpect("");
+        setImageQuestions([]);
+        setResetPage(Math.random());
+        $('#multiple-select-field').val(null).trigger('change');
+    }
 
     const handleSubmitQuestion = async () => {
-        // const isValidate = validateAskQuestion();
-        // if (!isValidate) {
-        //     return;
-        // }
-        const data = await createQuestion(idUser, titleQuestion, detailProblem, tryExpect, imageQuestion);
-        console.log('data', data);
+        let el = $('#multiple-select-field').select2('data');
 
-        // InsertTagsQuestion()
+        const isValidate = validateAskQuestion(el);
+        if (!isValidate) {
+            return;
+        }
+        const listIdTags = el.map((tag) => {
+            return tag.id;
+        })
+
+        const data = await createQuestion(idUser, titleQuestion, detailProblem, plainTextDetailProblem,
+            tryExpect, plainTextTryExpect, imageQuestions, listIdTags);
+
         if (data && data.EC === 0) {
+            clearPage();
             toast.success("Gửi câu hỏi thành công");
         }
         else {
             toast.error("Gửi câu hỏi thất bại");
         }
-
     }
 
     $('#multiple-select-field').select2({
@@ -98,41 +121,41 @@ const AskQuestion = (props) => {
                 <span className="fw-bold ">Tiêu Đề</span>
                 <span className="small d-block mb-2">Hãy xác định và hình dung câu hỏi để đặt cho mọi người.</span>
                 <input type="text" className="form-control rounded" placeholder="Ví dụ: Làm sao viết chương trình Hello World với C++?"
-                    value={titleQuestion} onChange={(e) => getTitleQuestion(e)} />
+                    value={titleQuestion} onChange={(e) => getTitleQuestion(e)} id="title-input-id" />
             </div>
             <div className="ask-detail mb-4">
                 <span className="fw-bold ">Mô tả chi tiết vấn đề của bạn.</span>
                 <span className="small d-block mb-2">Giới thiệu và trình bày cụ thể vấn đề. Tối thiểu 20 ký tự.</span>
-                <Editor getContentEditor={getContentEditor} id={1} />
+                <Editor getContentEditor={getContentEditor} id={1} resetPage={resetPage} getPlainTextEditor={getPlainTextEditor}
+                    initialHtml={""} initialHeight={"210px"} />
             </div>
             <div className="ask-try-expect mb-4">
                 <span className="fw-bold ">Các cách bạn đã thử và kết quả mong đợi.</span>
                 <span className="small d-block mb-2">Mô tả chi tiết các cách bạn đã thử làm và kết quả mong đợi xảy ra. Tối thiểu 20 ký tự.</span>
-                <Editor getContentEditor={getContentEditor} id={2} />
+                <Editor getContentEditor={getContentEditor} id={2} resetPage={resetPage} getPlainTextEditor={getPlainTextEditor}
+                    initialHtml={""} initialHeight={"210px"} />
             </div>
-            <UploadAndDisplayImage getImage={getImage} />
+
+            <UploadAndDisplayImage getImage={getImage} resetPage={resetPage} isMultiple={true} />
             <div className="ask-tag mt-4">
                 <span className="fw-bold ">Thẻ</span>
                 <span className="small d-block mb-2">Thêm thẻ mô tả chủ để câu hỏi.</span>
-                {/* <input type="text" className="form-control rounded" placeholder="Ví dụ: Toán 1, Vật lý 1"
-                    value={tagQuestion} onChange={(e) => getTagQuestion(e)} /> */}
                 <select className="form-select" id="multiple-select-field" data-placeholder="Chọn thẻ cho câu hỏi" multiple>
                     {listTags && listTags.length > 0 && listTags.map((tag, index) => {
                         return (
-                            <option key={tag.id}>{tag.tag_name}</option>
+                            <option key={tag.id} value={tag.id}>{tag.tag_name}</option>
                         )
                     })}
                 </select>
 
             </div>
-            <button type='button' className="btn" onClick={() => {
-                let el = $('#multiple-select-field').select2('data');
-                console.log('el', el);
-            }}>
-                Show selected values
-            </button>
             <button type="button" className="btn btn-primary d-block mt-3" onClick={() => handleSubmitQuestion()}>Gửi câu hỏi</button>
-            <button type="button" className="btn btn-danger mt-3">Xóa bản nháp</button>
+            <button type="button" className="btn btn-danger mt-3" onClick={() => {
+                const isConfirm = confirm("Xác nhận xóa bản nháp này?");
+                if (isConfirm) {
+                    clearPage()
+                }
+            }}>Xóa bản nháp</button>
         </div>
     )
 }

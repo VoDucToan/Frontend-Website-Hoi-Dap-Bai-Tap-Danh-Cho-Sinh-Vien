@@ -1,0 +1,35 @@
+.main-settings-user {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .sidebar-setttings-user {
+        .edit-profile {
+            border-radius: 10px;
+            padding: 6px;
+            font-size: 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f4f4f4;
+            }
+        }
+    }
+
+    .detail-settings-user {
+        max-width: 76%;
+        width: 100%;
+
+        .edit-profile-container {
+            .public-information {
+                border: 1px solid #d8d8d8;
+                border-radius: 5px;
+                padding: 15px;
+            }
+
+            .action-edit-profile {
+                margin-top: 20px;
+            }
+        }
+    }
+}

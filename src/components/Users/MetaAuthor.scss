@@ -1,0 +1,36 @@
+.meta-author {
+    .img-avatar-author {
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .infor-author {
+        .name-author {
+            color: #09a0ef;
+
+            &:hover {
+                cursor: pointer;
+                color: #0675b0;
+            }
+        }
+
+        .reputation-author {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .datetime-asked {
+            color: #898f95
+        }
+    }
+
+    // span {
+    //     font-size: 14px;
+    //     color: rgb(71, 119, 138);
+    //     cursor: pointer;
+    // }
+}

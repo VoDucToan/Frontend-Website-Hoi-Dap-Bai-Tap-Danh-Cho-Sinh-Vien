@@ -1,0 +1,66 @@
+.review-suggested-edit-tag-container {
+    .following-edit-tag {
+        .tag-summary-stats {
+            .number-views {
+                color: #716f6f;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+
+        .tag-summary-content {
+            .tag-summary-content-meta {
+                width: fit-content;
+                margin-left: auto;
+            }
+        }
+    }
+
+    .content-edit-tag {
+        .content-edit-tag-revision {
+            display: flex;
+
+            .content-edit-tag-revision-detail {
+                margin-left: 10px;
+
+                .content-edit-tag-revision-detail-edit-summary {
+                    color: #581515;
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                    display: block;
+                }
+
+                .content-edit-tag-revision-detail-tag-name {
+                    margin-bottom: 20px;
+                }
+
+                .content-edit-tag-revision-detail-tag-summary {
+                    border: 2px solid #ced4da;
+                    padding: 10px;
+                    margin-bottom: 20px;
+                }
+
+                .content-edit-tag-revision-detail-tag-wiki {
+                    margin-bottom: 20px;
+                }
+
+                .content-edit-tag-revision-detail-images {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-bottom: 20px;
+
+                    .content-edit-tag-revision-detail-images-tag {
+                        width: 40%;
+                        text-align: center;
+                    }
+
+                    .content-edit-tag-revision-detail-images-edit {
+                        width: 40%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

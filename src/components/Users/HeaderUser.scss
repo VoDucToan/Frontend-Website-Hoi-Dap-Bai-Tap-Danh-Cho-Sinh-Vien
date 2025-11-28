@@ -1,0 +1,124 @@
+.header-user {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    .avatar-user {
+        display: flex;
+        gap: 10px;
+
+        .img-avatar-user {
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .info-avatar-user {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .display-name-avatar-user {
+                font-size: 30px;
+                font-weight: 400;
+            }
+
+            .member-user {
+                .icon-member-user {
+                    color: gray;
+                    font-size: 18px;
+                    margin-right: 5px;
+                }
+
+                .text-member-user {
+                    color: gray;
+                    font-size: 15px;
+                }
+            }
+
+            .location-user {
+                .icon-location-user {
+                    color: gray;
+                    font-size: 18px;
+                    margin-right: 5px;
+                }
+
+                .text-location-user {
+                    color: gray;
+                    font-size: 15px;
+                }
+            }
+        }
+
+
+    }
+
+    .btn-edit-profile {
+        border: 1px solid #d8d8d8;
+        cursor: pointer;
+        height: fit-content;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+
+        .text-edit-profile {
+            font-size: 15px;
+        }
+    }
+}
+
+.navigate-body-user {
+    gap: 25px;
+
+    .profile-user {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .activity-user {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .saves-user {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .settings-user {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+}

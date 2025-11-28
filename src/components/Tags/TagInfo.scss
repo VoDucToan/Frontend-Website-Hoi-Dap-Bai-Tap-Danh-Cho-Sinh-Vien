@@ -1,0 +1,21 @@
+.tag-info-container {
+    .tag-info-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .tag-info-content {
+        margin-bottom: 20px;
+
+        .tag-info-content-summary {
+            border: 2px solid #ced4da;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tag-info-content-wiki {}
+    }
+
+    .tag-info-action {}
+}

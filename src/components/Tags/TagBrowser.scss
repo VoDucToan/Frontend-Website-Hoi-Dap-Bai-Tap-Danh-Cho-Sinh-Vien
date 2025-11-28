@@ -1,0 +1,19 @@
+.tag-browser-container {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 12px;
+
+    .tag-browser-description {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .tag-browser-figures-question {
+        margin-top: 10px;
+
+        .number-questions-all-time {
+            font-size: 14px;
+            color: gray;
+        }
+    }
+}

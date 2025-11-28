@@ -265,8 +265,8 @@ function BlockOptionsDropdownList({
 
     if (toolbar !== null && dropDown !== null) {
       // const { top, left } = toolbar.getBoundingClientRect();
-      dropDown.style.top = `42px`;
-      dropDown.style.left = `74px`;
+      dropDown.style.top = `${40}px`;
+      dropDown.style.left = `${80}px`;
     }
   }, [dropDownRef, toolbarRef]);
 
@@ -562,7 +562,7 @@ export default function ToolbarPlugin() {
         <>
           <button
             className="toolbar-item block-controls"
-            id="render-options-toolbar"
+            // id="render-options-toolbar"
             onClick={() =>
               setShowBlockOptionsDropDown(!showBlockOptionsDropDown)
             }
@@ -571,8 +571,15 @@ export default function ToolbarPlugin() {
             <span className={"icon block-type " + blockType} />
             <span className="text">{blockTypeToBlockName[blockType]}</span>
             <i className="chevron-down" />
+            {showBlockOptionsDropDown &&
+              <BlockOptionsDropdownList
+                editor={editor}
+                blockType={blockType}
+                toolbarRef={toolbarRef}
+                setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
+              />}
           </button>
-          {showBlockOptionsDropDown &&
+          {/* {showBlockOptionsDropDown &&
             createPortal(
               <BlockOptionsDropdownList
                 editor={editor}
@@ -581,7 +588,7 @@ export default function ToolbarPlugin() {
                 setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
               />,
               document.getElementById("render-options-toolbar")
-            )}
+            )} */}
           <Divider />
         </>
       )}

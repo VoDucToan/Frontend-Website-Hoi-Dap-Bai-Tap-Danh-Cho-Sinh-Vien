@@ -1,0 +1,15 @@
+.follow-user-container {
+    .head-follow-user {
+        margin-bottom: 10px;
+
+        .amount-follow-user {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+    .followed-user {
+        border: 1px solid #adb5bd;
+        border-radius: 5px;
+    }
+}

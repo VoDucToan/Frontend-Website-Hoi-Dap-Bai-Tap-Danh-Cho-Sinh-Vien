@@ -1,0 +1,21 @@
+.user-browser-container {
+    display: flex;
+    gap: 10px;
+
+    .avatar-user {
+        height: 100px;
+        cursor: pointer;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .user-info-name {
+            font-size: 16px;
+            color: #38afc5;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.followed-user-container {
+    border-bottom: 1px solid #adb5bd;
+    padding: 10px;
+    position: relative;
+
+    &:last-child {
+        border: none;
+    }
+
+    .unfollow-post {
+        cursor: pointer;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        &:hover {
+            outline: 1px solid black;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.answer-container {
+    margin-top: 15px;
+    display: flex;
+
+    .detail-answer {
+        margin-left: 10px;
+        flex-grow: 1;
+
+        .content-answer {
+            margin-bottom: 20px;
+        }
+
+        .signature-answer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

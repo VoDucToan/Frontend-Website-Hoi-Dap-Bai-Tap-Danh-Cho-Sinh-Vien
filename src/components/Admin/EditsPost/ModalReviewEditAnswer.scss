@@ -1,0 +1,41 @@
+.review-suggested-edit-container {
+    .following-edit {}
+
+    .content-edit {
+        .content-edit-revision {
+            display: flex;
+
+            .content-edit-revision-detail {
+                margin-left: 10px;
+
+                .content-edit-revision-detail-edit-summary {
+                    color: #581515;
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                    display: block;
+                }
+
+                .content-edit-revision-detail-answer {
+                    margin-bottom: 20px;
+                }
+
+                .content-edit-revision-detail-images {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-bottom: 20px;
+
+                    .content-edit-revision-detail-images-answer {
+                        width: 40%;
+                        text-align: center;
+                    }
+
+                    .content-edit-revision-detail-images-edit {
+                        width: 40%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

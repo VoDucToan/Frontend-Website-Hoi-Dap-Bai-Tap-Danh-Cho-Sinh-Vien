@@ -1,0 +1,13 @@
+.container-verify-email {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .message-verify-email {
+        font-size: 30px;
+        font-weight: 400;
+    }
+}

@@ -1,6 +1,6 @@
 import axios from "../utils/Axios/axiosCustomize";
 
-const getNameUser = (idUser) => {
+const getUser = (idUser) => {
     return axios.get(`api/v1/user/${idUser}`);
 }
 
@@ -25,4 +25,39 @@ const getAccount = () => {
     return axios.get('api/v1/get-account');
 }
 
-export { getNameUser, createUser, loginUser, getAccount };
+const verifyEmail = (token) => {
+    const data = {
+        token
+    }
+    return axios.put('api/v1/verify-email', data);
+}
+
+const getListUsers = (page, limit, search) => {
+    return axios.get(`api/v1/list-users?page=${page}&limit=${limit}&search=${search}`);
+}
+
+const updateUser = (idUser, idRole, userName, locationUser, aboutMe, avatarImage) => {
+    const form = new FormData();
+    form.append('idUser', idUser)
+    form.append('idRole', idRole)
+    form.append('userName', userName)
+    form.append('locationUser', locationUser)
+    form.append('aboutMe', aboutMe)
+    avatarImage.forEach((img) => {
+        form.append('fileImage', img)
+    })
+    return axios.put('api/v1/user', form);
+}
+
+const refreshAccessToken = () => {
+    return axios.post('api/v1/refresh');
+}
+
+const logout = () => {
+    return axios.put('api/v1/logout');
+}
+
+export {
+    getUser, createUser, loginUser, getAccount, verifyEmail,
+    getListUsers, updateUser, refreshAccessToken, logout
+};

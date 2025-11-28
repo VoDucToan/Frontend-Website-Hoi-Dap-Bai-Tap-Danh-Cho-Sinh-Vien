@@ -21,11 +21,9 @@ import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import './Editor.scss';
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
-import { useEffect, useState } from "react";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { $generateHtmlFromNodes } from '@lexical/html';
 import HtmlPlugin from "./plugins/HtmlPlugin";
+import { BLUR_COMMAND, COMMAND_PRIORITY_EDITOR } from "lexical";
+import { useEffect, useRef } from "react";
 
 function Placeholder() {
   return <div className="editor-placeholder"></div>;
@@ -56,10 +54,14 @@ const editorConfig = {
 
 export default function Editor(props) {
 
-  const { getContentEditor, id } = props;
+  const { getContentEditor, id, resetPage, getPlainTextEditor, initialHtml, initialHeight } = props;
 
   const handleHtmlChanged = (html) => {
     getContentEditor(html, id);
+  }
+
+  const handlePlainText = (plainText) => {
+    getPlainTextEditor(plainText, id);
   }
 
   return (
@@ -69,7 +71,9 @@ export default function Editor(props) {
         <div className="editor-inner">
 
           <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
+            contentEditable={<ContentEditable
+              className="editor-input"
+              style={{ height: initialHeight }} />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
@@ -77,9 +81,11 @@ export default function Editor(props) {
           {/* <TreeViewPlugin /> */}
           <HtmlPlugin
             onHtmlChanged={(html) => handleHtmlChanged(html)}
-            initialHtml=""
+            initialHtml={initialHtml}
+            resetPage={resetPage}
+            handlePlainText={handlePlainText}
           />
-          <AutoFocusPlugin />
+          {/* <AutoFocusPlugin /> */}
           <CodeHighlightPlugin />
           <ListPlugin />
           <LinkPlugin />

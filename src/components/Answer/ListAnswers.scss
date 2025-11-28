@@ -1,24 +1,24 @@
 .list-answers-container {
-    .number-answers {}
+    margin-top: 20px;
 
-    .answer-container {
-        margin-top: 15px;
+    .list-answers-header {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        .detail-answer {
-            max-width: 800px;
-            width: 100%;
-            margin-left: 10px;
+        .number-answers {
+            font-size: 22px;
+            font-weight: 400;
+        }
 
-            .content-answer {
-                margin-bottom: 20px;
-            }
+        .sort-answers {
+            display: flex;
+            align-items: center;
+        }
 
-            .signature-answer {
-                margin-top: 20px;
-                display: flex;
-                justify-content: space-between;
-            }
+        .sort-select-option {
+            width: fit-content;
         }
     }
+
 }

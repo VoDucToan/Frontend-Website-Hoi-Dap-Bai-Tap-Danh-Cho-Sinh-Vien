@@ -1,0 +1,21 @@
+.vote-answer-container {
+    display: flex;
+    align-items: center;
+
+    .text-vote {
+        font-size: 14px;
+        color: #41464b;
+        margin-left: 40px;
+    }
+
+    .voted-time {
+        font-size: 14px;
+        color: #41464b;
+        margin-left: auto;
+    }
+
+    .summary-title-question {
+        display: inline;
+        margin-left: 40px;
+    }
+}

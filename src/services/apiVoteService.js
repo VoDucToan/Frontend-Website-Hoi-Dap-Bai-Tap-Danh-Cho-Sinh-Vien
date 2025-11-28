@@ -34,11 +34,10 @@ const getNumberVotesComment = (idComment) => {
     return axios.get(`api/v1/number-vote-for-comment/${idComment}`);
 }
 
-const handleIncreaseVoteComment = (idComment, idUser, idVoteType) => {
+const handleIncreaseVoteComment = (idComment, idUser) => {
     const data = {
         idComment: idComment,
         idUser: idUser,
-        idVoteType: idVoteType
     }
     return axios.post(`api/v1/increase-vote-for-comment`, data);
 }
@@ -51,8 +50,27 @@ const getVoteTypeComment = (idComment, idUser) => {
     return axios.get(`api/v1/vote-type-for-comment/${idComment}/${idUser}`);
 }
 
+const upVoteForPost = (idPost, idUser) => {
+    const data = {
+        idPost, idUser
+    }
+    return axios.post('api/v1/up-vote-for-post', data);
+}
+
+const downVoteForPost = (idPost, idUser) => {
+    const data = {
+        idPost, idUser
+    }
+    return axios.post('api/v1/down-vote-for-post', data);
+}
+
+const getVotePostsByUser = (page, limit, idUser) => {
+    return axios.get(`api/v1/vote-posts-by-user/${idUser}?page=${page}&limit=${limit}`);
+}
+
 export {
     getNumberVotesPost, handleIncreaseVotePost, handleUnvotePost,
     getVoteTypePost, handleDecreaseVotePost, getNumberVotesComment,
-    handleIncreaseVoteComment, handleUnvoteComment, getVoteTypeComment
+    handleIncreaseVoteComment, handleUnvoteComment, getVoteTypeComment,
+    upVoteForPost, downVoteForPost, getVotePostsByUser
 };

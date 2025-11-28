@@ -1,0 +1,40 @@
+.post-summary-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .number-votes {
+        color: #000000;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .number-answers {
+        color: #198754;
+        font-size: 15px;
+        font-weight: 400;
+        border: 1px solid green;
+        border-radius: 5px;
+        padding: 3px;
+    }
+
+    .number-answers-accepted {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        border: 1px solid green;
+        border-radius: 5px;
+        padding: 3px;
+        background-color: green;
+    }
+
+    .number-views {
+        color: #716f6f;
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+
+.post-summary-stats-column {
+    flex-direction: column;
+}

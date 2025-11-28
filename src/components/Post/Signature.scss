@@ -1,0 +1,29 @@
+.signature-post {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .option-post {
+        .share-option-post {
+            font-size: 15px;
+            color: #000;
+            margin-right: 10px;
+
+            &:hover {
+                cursor: pointer;
+                color: #515151;
+            }
+        }
+
+        .edit-option-post {
+            font-size: 15px;
+            color: #000;
+            margin-right: 10px;
+
+            &:hover {
+                cursor: pointer;
+                color: #515151;
+            }
+        }
+    }
+}

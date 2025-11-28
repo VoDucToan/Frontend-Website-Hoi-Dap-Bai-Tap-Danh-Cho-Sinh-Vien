@@ -1,0 +1,45 @@
+.logo-web {
+    margin-left: 147px;
+}
+
+.navbar-collapse {
+    margin-right: 120px;
+
+    .header-search {
+        align-items: center;
+        margin-right: 100px;
+        width: 60%;
+
+        .icon-search {
+            color: gray;
+            font-size: 24px;
+            z-index: 1;
+            margin-top: -4px;
+            margin-right: -27px;
+        }
+
+        .input-search {
+            padding-left: 27px;
+        }
+    }
+
+    .avatar-author-container {
+        height: 40px;
+        cursor: pointer;
+        padding: 5px;
+
+        &:hover {
+            background-color: #dedede;
+        }
+
+        .img-avatar-author {
+            height: 100%;
+        }
+
+        .reputation-author {
+            font-size: 13px;
+            color: black;
+            font-weight: 600;
+        }
+    }
+}

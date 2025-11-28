@@ -1,0 +1,50 @@
+.user-action-question {
+    font-size: 15px;
+    padding: 5px;
+
+    .datetime-user-edited {
+        color: #09a0ef;
+
+        &:hover {
+            cursor: pointer;
+            color: #0675b0;
+        }
+    }
+
+    .datetime-user-asked {
+        color: #898f95;
+    }
+
+    .information-author {
+        display: flex;
+
+        .avatar-author {
+            margin-right: 10px;
+
+            .img-avatar-author {
+                height: 60px;
+                cursor: pointer;
+            }
+        }
+
+        .detail-author {
+            display: flex;
+            flex-direction: column;
+
+            .name-detail-author {
+                color: #09a0ef;
+
+                &:hover {
+                    cursor: pointer;
+                    color: #0675b0;
+                }
+            }
+
+            .reputation-detail-author {
+                font-size: 14px;
+                font-weight: 500;
+                width: fit-content;
+            }
+        }
+    }
+}

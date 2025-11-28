@@ -1,0 +1,12 @@
+.question {
+    width: 100%;
+    border: 1px solid rgb(215, 213, 213);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .summary-content-container {
+        width: 740px;
+    }
+}

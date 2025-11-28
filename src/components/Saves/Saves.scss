@@ -1,0 +1,40 @@
+.saves-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+
+    .list-saves {
+        padding: 6px;
+        font-size: 15px;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .list-your-saves {
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title-saves {
+            font-size: 15px;
+            color: black;
+            font-weight: 600;
+            padding: 6px;
+        }
+
+        .icon-saves {
+            color: #00a8ff;
+            font-size: 22px;
+            cursor: pointer;
+            margin-top: -5px;
+        }
+    }
+
+    .main-saves {
+        width: calc(100% - 240px);
+    }
+}

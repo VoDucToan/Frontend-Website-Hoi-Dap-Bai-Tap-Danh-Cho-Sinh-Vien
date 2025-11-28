@@ -1,0 +1,59 @@
+.profile-user-container {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+
+    .stats-profile-user {
+        .detail-stats-profile-user {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            width: 280px;
+            padding: 10px;
+            border: 1px solid #adb5bd;
+            border-radius: 5px;
+
+            .reputation-detail-stats {
+                .amount-reputation-points {
+                    display: block;
+                    font-weight: 600;
+                }
+
+                .text-reputation-points {
+                    font-size: 14px;
+                    color: #86909a;
+                }
+            }
+
+            .answers-detail-stats {
+                .amount-answers {
+                    display: block;
+                    font-weight: 600;
+                }
+
+                .text-answers {
+                    font-size: 14px;
+                    color: #86909a;
+                }
+            }
+
+            .questions-detail-stats {
+                .amount-questions {
+                    display: block;
+                    font-weight: 600;
+                }
+
+                .text-questions {
+                    font-size: 14px;
+                    color: #86909a;
+                }
+            }
+        }
+    }
+
+    .about-profile-user {
+        flex-grow: 1;
+
+        .content-about-profile-user {}
+    }
+}

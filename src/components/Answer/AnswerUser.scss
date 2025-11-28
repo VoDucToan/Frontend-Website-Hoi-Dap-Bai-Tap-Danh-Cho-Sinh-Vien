@@ -1,0 +1,8 @@
+.answer-answered-container {
+    border-bottom: 1px solid #adb5bd;
+    padding: 10px;
+
+    &:last-child {
+        border: none;
+    }
+}

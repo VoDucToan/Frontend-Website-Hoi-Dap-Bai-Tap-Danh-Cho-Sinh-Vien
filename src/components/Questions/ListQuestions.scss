@@ -1,67 +1,75 @@
 .list-questions-container {
-    .question {
-        width: 100%;
-        border: 1px solid rgb(215, 213, 213);
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    width: 900px;
 
-        .summary-stats {
-            width: 120px;
+    .filter-list-questions {
+        margin-bottom: 10px;
+
+        .header-filter {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            align-items: end;
-            height: 60px;
+            align-items: center;
+            margin-bottom: 10px;
 
-            .stats-votes {
-                span {
-                    font-size: 14px;
-                    color: rgb(116, 114, 114);
-                    font-weight: 400;
-                }
+            .amount-questions-filter {
+                font-size: 18px;
+                font-weight: 400;
             }
 
-            .stats-answer {
-                span {
-                    font-size: 14px;
-                    color: rgb(116, 114, 114);
-                    font-weight: 400;
+            .btn-filter {
+                border-radius: 5px;
+                border: 1px solid #31a3c6;
+                color: #32bde8;
+                font-size: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px;
+                gap: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #d5f4ff;
                 }
             }
         }
 
-        .summary-content {
-            width: 730px;
+        .detail-filter {
+            background-color: #ededed;
 
-            .summary-title-question {
-                margin-bottom: 10px;
-
-                a {
-                    text-decoration: none;
-
-                    span {
-                        font-size: 16px;
-                        color: rgb(59, 100, 236);
-                        font-weight: 400;
-                        cursor: pointer;
-                    }
-                }
-
-            }
-
-            .summary-meta {
+            .form-detail-filter {
                 display: flex;
                 justify-content: space-between;
+                padding: 10px;
+                border: 1px solid #c0c0c0;
 
-                .meta-author {
-                    span {
-                        font-size: 14px;
-                        color: rgb(71, 119, 138);
-                        cursor: pointer;
+                .filter-by {
+                    .form-day-olds {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        .input-day-olds {
+                            width: 80px;
+                        }
                     }
                 }
+
+                .sorted-by {}
+
+                .tagged-with {
+                    .select-following-tags {
+                        width: 340px;
+                    }
+                }
+            }
+
+            .action-filter {
+                padding: 10px;
+                border-left: 1px solid #c0c0c0;
+                border-bottom: 1px solid #c0c0c0;
+                border-right: 1px solid #c0c0c0;
+                display: flex;
+                justify-content: space-between;
             }
         }
     }

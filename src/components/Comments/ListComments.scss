@@ -6,24 +6,96 @@
         border-bottom: 1px solid #e0dcdc;
         padding: 5px 0;
 
-
-
         .content-comment {
             font-size: 14px;
             font-weight: 400;
+
+            .signature-comment {
+                .author-comment {
+                    color: #09a0ef;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: #0675b0;
+                    }
+                }
+
+                .datetime-comment {
+                    color: #898f95;
+                }
+            }
+
+            .icon-edited-comment {
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .action-comment {
+                .edit-comment {
+                    margin: 0 10px;
+                    color: rgb(84 159 234);
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 400;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: rgb(5, 127, 203);
+                    }
+                }
+
+                .delete-comment {
+                    color: rgb(234, 104, 84);
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 400;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: rgb(233, 63, 36);
+                    }
+                }
+            }
         }
+    }
+
+    .edit-comment-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
     }
 
     .add-comment {
         font-size: 14px;
         font-weight: 400;
-        color: rgb(154, 156, 158);
+        color: rgb(84 159 234);
         margin-top: 5px;
         width: fit-content;
 
         &:hover {
             cursor: pointer;
-            color: rgb(159, 202, 228);
+            color: rgb(5, 127, 203);
+        }
+    }
+
+    .add-comment-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .btn-add-comment {}
+    }
+
+    .more-comment {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgb(84 159 234);
+        margin-top: 5px;
+        width: fit-content;
+
+        &:hover {
+            cursor: pointer;
+            color: rgb(5, 127, 203);
         }
     }
 }

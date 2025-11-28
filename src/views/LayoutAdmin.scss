@@ -1,0 +1,22 @@
+.admin-container {
+    .main-admin-container {
+        display: flex;
+        max-width: 1376px;
+        width: 100%;
+        margin: 0 auto;
+
+        .sidenav-admin-container {
+            // height: calc(100vh - 56px);
+            position: sticky;
+            // top: 56px;
+            overflow-y: auto;
+        }
+
+        .admin-content {
+            flex: 1 1 auto;
+            width: calc(100% - 230px);
+            max-width: 1146px;
+            padding: 20px;
+        }
+    }
+}

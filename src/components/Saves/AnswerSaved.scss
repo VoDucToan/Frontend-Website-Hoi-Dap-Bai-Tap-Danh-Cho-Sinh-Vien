@@ -1,0 +1,33 @@
+.answer-saved-container {
+    .answer-saved {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .before-answer-saved {
+            width: 5px;
+            background-color: #ced4da;
+        }
+
+        .detail-answer-saved {
+            width: calc(100% - 5px - 10px);
+
+            .preview-answer-saved {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .meta-answer-saved {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .view-answer-saved {
+                    font-size: 14px;
+                    color: #0b6fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

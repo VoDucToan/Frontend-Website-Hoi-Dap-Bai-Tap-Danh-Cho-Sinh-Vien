@@ -1,0 +1,32 @@
+.tags-container {
+    .find-tags {
+        margin-top: 20px;
+
+        .search-tags {
+            display: flex;
+            align-items: center;
+            width: 200px;
+
+            .icon-search-tags {
+                color: gray;
+                font-size: 24px;
+                z-index: 1;
+                margin-top: -4px;
+                margin-right: -27px;
+            }
+
+            .input-search-tags {
+                padding-left: 27px;
+            }
+        }
+
+        .filter-tags {}
+    }
+
+    .list-tags {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: auto auto auto auto;
+        margin-top: 20px;
+    }
+}

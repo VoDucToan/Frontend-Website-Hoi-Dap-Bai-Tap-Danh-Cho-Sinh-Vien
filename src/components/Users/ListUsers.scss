@@ -1,0 +1,30 @@
+.list-users-container {
+    .find-users {
+        margin-top: 20px;
+
+        .search-users {
+            display: flex;
+            align-items: center;
+            width: 200px;
+
+            .icon-search-users {
+                color: gray;
+                font-size: 24px;
+                z-index: 1;
+                margin-top: -4px;
+                margin-right: -27px;
+            }
+
+            .input-search-users {
+                padding-left: 27px;
+            }
+        }
+    }
+
+    .list-users {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: auto auto auto auto;
+        margin-top: 20px;
+    }
+}

@@ -1,6 +1,13 @@
 import axios from "axios";
 
+let store;
+
+export const injectStore = _store => {
+    store = _store
+}
+
 const instance = axios.create({
+    withCredentials: true,
     baseURL: 'http://localhost:8080/',
 
 });
@@ -8,7 +15,7 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
-    config.headers.Authorization = `Bearer ${localStorage.getItem("access_token")}`;
+    config.headers.Authorization = `Bearer ${store.getState().auth.accessToken}`;
     return config;
 }, function (error) {
     // Do something with request error

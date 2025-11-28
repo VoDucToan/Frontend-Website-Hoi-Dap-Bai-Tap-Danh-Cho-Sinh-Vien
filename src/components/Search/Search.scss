@@ -1,0 +1,27 @@
+.search-container {
+    .head-search {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .options-search {
+        margin-bottom: 20px;
+
+        .options-search-text {
+            font-size: 15px;
+            color: #6b6b6b;
+        }
+    }
+
+    .options-result {
+        margin-bottom: 20px;
+
+        .amount-result {
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
+
+    .results-container {}
+}

@@ -1,0 +1,141 @@
+.activity-user-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+
+    .summary-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .answers-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .questions-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .tags-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .badges-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .following-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .bounties-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .reputation-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .all-actions-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .responses-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .votes-sidebar {
+        border-radius: 10px;
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: black;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+
+    .detail-activity-user {
+        width: calc(100% - 130px - 20px);
+    }
+}
