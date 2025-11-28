@@ -53,8 +53,8 @@ function ModalUpdateQuestion(props) {
                 })
                 const $ = window.$;
                 const $sel = $('#multiple-select-field');
-                $sel('#multiple-select-field').val(valueSelected);
-                $sel('#multiple-select-field').trigger('change'); // Notify any JS components that the value changed
+                $sel.val(valueSelected);
+                $sel.trigger('change'); // Notify any JS components that the value changed
             }
         }
         const fetchImagesQuestion = async () => {
@@ -117,7 +117,7 @@ function ModalUpdateQuestion(props) {
     const handleSaveChanges = async () => {
         const $ = window.$;
         const $sel = $('#multiple-select-field');
-        let el = $sel('#multiple-select-field').select2('data');
+        let el = $sel.select2('data');
         const isValidate = validateAskQuestion(el);
         if (!isValidate) {
             return;
@@ -140,7 +140,7 @@ function ModalUpdateQuestion(props) {
     useEffect(() => {
         const $ = window.$;
         const $sel = $('#multiple-select-field');
-        $sel('#multiple-select-field').select2({
+        $sel.select2({
             theme: "bootstrap-5",
             width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
             placeholder: $(this).data('placeholder'),
@@ -180,10 +180,10 @@ function ModalUpdateQuestion(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="modal-update-question-container px-4">
-                        <div class="form-check form-switch mb-4">
-                            <input class="form-check-input" type="checkbox" role="switch" id="idSwitchStatus"
+                        <div className="form-check form-switch mb-4">
+                            <input className="form-check-input" type="checkbox" role="switch" id="idSwitchStatus"
                                 checked={statusQuestion} onChange={(e) => getStatus(e)} />
-                            <label class="form-check-label fw-bold" for="idSwitchStatus">Trạng thái kích hoạt</label>
+                            <label className="form-check-label fw-bold" htmlFor="idSwitchStatus">Trạng thái kích hoạt</label>
                         </div>
                         <div className="ask-title mb-4">
                             <span className="fw-bold ">Tiêu Đề</span>
