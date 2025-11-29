@@ -8,8 +8,7 @@ export const injectStore = _store => {
 
 const instance = axios.create({
     withCredentials: true,
-    // baseURL: 'http://localhost:8080/',
-    baseURL: 'https://backend-website-hoi-dap-bai-tap-danh-cho.onrender.com',
+    baseURL: process.env.REACT_APP_URL_NODE,
 });
 
 // Add a request interceptor

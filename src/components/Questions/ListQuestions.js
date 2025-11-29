@@ -33,8 +33,10 @@ const ListQuestions = (props) => {
     }, [])
 
     const fetchListQuestions = async (watchedTags, ignoredTags) => {
-        let data = await getListQuestions(page, limit, true, noAnswers, noUpVoted,
+        let data = await getListQuestions({
+            page, limit, status: true, noAnswers, noUpVoted,
             noAcceptedAnswer, dayOlds, typeOrder, watchedTags, ignoredTags
+        }
         );
         if (data && data.EC === 0) {
             setListQuestions(data.DT.questions);

@@ -20,7 +20,7 @@ const ManageQuestions = () => {
     useEffect(() => {
         const fetchListQuestions = async () => {
             if (page && limit) {
-                const data = await getListQuestions(page, limit);
+                const data = await getListQuestions({ page, limit, typeOrder: "newest" });
                 setListQuestions(data.DT.questions);
                 setTotalPages(data.DT.totalPages);
             }

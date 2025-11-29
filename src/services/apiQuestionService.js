@@ -1,8 +1,8 @@
 import axios from "../utils/Axios/axiosCustomize";
 const FormData = require('form-data')
 
-const getListQuestions = (page, limit, status, noAnswers, noUpVoted, noAcceptedAnswer, daysOld, typeOrder,
-    watchedTags, ignoredTags
+const getListQuestions = ({ page, limit, status, noAnswers, noUpVoted, noAcceptedAnswer, daysOld, typeOrder,
+    watchedTags, ignoredTags }
 ) => {
     return axios.get(`api/v1/list-questions?page=${page}&limit=${limit}&status=${status}&noAnswers=${noAnswers}&noUpVoted=${noUpVoted}&noAcceptedAnswer=${noAcceptedAnswer}&daysOld=${daysOld}&typeOrder=${typeOrder}&watchedTags=${watchedTags}&ignoredTags=${ignoredTags}`);
 }
