@@ -30,7 +30,7 @@ function ModalUpdateTag(props) {
         const resImagesTag = await getImagesTag(idtag);
         if (resImagesTag && resImagesTag.EC === 0) {
             const arrDataImagesTag = resImagesTag.DT.map((imageTag) => {
-                return `${process.env.REACT_APP_URL_NODE}images/uploads/${imageTag.file_name}`;
+                return `${process.env.REACT_APP_URL_NODE}/images/uploads/${imageTag.file_name}`;
             })
             setInitialImageTag(arrDataImagesTag);
         }

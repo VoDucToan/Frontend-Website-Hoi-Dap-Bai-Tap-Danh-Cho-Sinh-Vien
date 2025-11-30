@@ -29,7 +29,7 @@ const EditProfile = (props) => {
 
     useEffect(() => {
         if (!_.isEmpty(user)) {
-            setInitialImageUser([`${process.env.REACT_APP_URL_NODE}images/uploads/${user.avatar_file_name}`])
+            setInitialImageUser([`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`])
             setDisplayName(user.display_name);
             setLocation(user.location);
             setInitialAboutMe(user.about_me);

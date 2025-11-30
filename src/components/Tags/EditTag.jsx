@@ -44,7 +44,7 @@ const EditTag = () => {
         const resImagesEditTag = await getImagesForEditTag(idEditTag)
         if (resImagesEditTag && resImagesEditTag.EC === 0) {
             const arrDataImagesEditTag = resImagesEditTag.DT.map((imageEditTag) => {
-                return `${process.env.REACT_APP_URL_NODE}images/uploads/${imageEditTag.file_name}`;
+                return `${process.env.REACT_APP_URL_NODE}/images/uploads/${imageEditTag.file_name}`;
             })
             setInitialImageTag(arrDataImagesEditTag);
         }

@@ -256,7 +256,7 @@ function ModalReviewEditQuestion(props) {
                                 idQuestion={idQuestion}
                                 idAuthor={question.created_by_user_id}
                                 titleQuestion={question.post_title}
-                                avatarAuthor={`${process.env.REACT_APP_URL_NODE}images/uploads/${user.avatar_file_name}`}
+                                avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
                                 nameUser={user.display_name}
                                 questionAskedTime={question.askedTime}
                                 reputation={user.reputation}
@@ -289,7 +289,7 @@ function ModalReviewEditQuestion(props) {
                                                     <h5>Hình ảnh câu hỏi</h5>
                                                     {imagesEditedQuestion && imagesEditedQuestion.length > 0 && imagesEditedQuestion.map((image, index) => {
                                                         return (
-                                                            <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`}
+                                                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
@@ -298,7 +298,7 @@ function ModalReviewEditQuestion(props) {
                                                     <h5>Hình ảnh chỉnh sửa</h5>
                                                     {imagesEdit && imagesEdit.length > 0 && imagesEdit.map((image, index) => {
                                                         return (
-                                                            <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`}
+                                                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
@@ -309,7 +309,7 @@ function ModalReviewEditQuestion(props) {
                                                 id="id-content-edit-revision-detail-tags">
                                             </div>
 
-                                            <ProposedAuthor avatarAuthor={`${process.env.REACT_APP_URL_NODE}images/uploads/${avatarProposedAuthor}`} nameUser={nameUser}
+                                            <ProposedAuthor avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${avatarProposedAuthor}`} nameUser={nameUser}
                                                 postProposedTime={postProposedTime} />
                                             <div className='mb-3'>
                                                 <Follow idPost={idQuestion} postType={question.post_type_id} idAuthor={question.created_by_user_id} />

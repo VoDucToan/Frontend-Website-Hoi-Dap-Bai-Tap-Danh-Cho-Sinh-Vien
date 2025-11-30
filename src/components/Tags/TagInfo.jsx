@@ -53,7 +53,7 @@ const TagInfo = () => {
                 <div>
                     {imagesTag && imagesTag.length > 0 && imagesTag.map((image, index) => {
                         return (
-                            <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`}
+                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
                                 className='img-thumbnail' key={index} />
                         )
                     })}

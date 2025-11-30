@@ -48,7 +48,7 @@ const Answer = (props) => {
                     dangerouslySetInnerHTML={{ __html: contentAnswer }}></div>
                 {imagesByAnswers && imagesByAnswers.length > 0 && imagesByAnswers.map((image, index) => {
                     return (
-                        <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
+                        <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
                     )
                 })}
                 <Signature idAuthorAsked={idAuthorAsked} askedTime={askedTime}

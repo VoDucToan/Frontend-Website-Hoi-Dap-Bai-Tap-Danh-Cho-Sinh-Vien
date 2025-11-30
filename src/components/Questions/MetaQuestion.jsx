@@ -73,7 +73,7 @@ const MetaQuestion = (props) => {
                     idQuestion={idQuestion}
                     titleQuestion={titleQuestion}
                     listTags={listTagsByQuestion}
-                    avatarAuthor={`${process.env.REACT_APP_URL_NODE}images/uploads/${user.avatar_file_name}`}
+                    avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
                     nameUser={user.display_name}
                     questionAskedTime={questionAskedTime}
                     previewContent={previewContent}

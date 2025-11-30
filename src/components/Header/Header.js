@@ -69,7 +69,7 @@ const Header = () => {
                                                 }
                                             >
                                                 <img className="img-avatar-author"
-                                                    src={`${process.env.REACT_APP_URL_NODE}images/uploads/${auth.user.avatar}`}
+                                                    src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${auth.user.avatar}`}
                                                     alt="Avatar Author" />
                                             </OverlayTrigger>
                                             <OverlayTrigger
