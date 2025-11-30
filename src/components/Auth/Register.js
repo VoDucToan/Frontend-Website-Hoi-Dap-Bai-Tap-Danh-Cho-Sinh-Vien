@@ -37,7 +37,6 @@ const Register = (props) => {
             return;
         }
         const data = await createUser(email, password, name);
-        console.log('data', data);
         if (data.EC === 0) {
             toast.success("Đăng ký thành công!")
             navigate('/');

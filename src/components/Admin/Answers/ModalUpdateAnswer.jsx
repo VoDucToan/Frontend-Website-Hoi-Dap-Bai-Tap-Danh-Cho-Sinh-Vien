@@ -32,7 +32,7 @@ function ModalUpdateAnswer(props) {
             const dataImagesPost = await getImagesPost(idAnswer);
             if (dataImagesPost && dataImagesPost.EC === 0) {
                 const arrDataImagesPost = dataImagesPost.DT.map((imagePost) => {
-                    return `http://localhost:8080/images/uploads/${imagePost.file_name}`;
+                    return `${process.env.REACT_APP_URL_NODE}images/uploads/${imagePost.file_name}`;
                 })
                 setInitialImageAnswer(arrDataImagesPost);
             }

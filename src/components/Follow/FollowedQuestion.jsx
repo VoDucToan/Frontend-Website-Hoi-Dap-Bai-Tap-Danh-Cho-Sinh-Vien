@@ -68,7 +68,7 @@ const FollowedQuestion = (props) => {
                 idQuestion={idQuestion}
                 titleQuestion={titleQuestion}
                 listTags={listTagsByQuestion}
-                avatarAuthor={`http://localhost:8080/images/uploads/${user.avatar_file_name}`}
+                avatarAuthor={`${process.env.REACT_APP_URL_NODE}images/uploads/${user.avatar_file_name}`}
                 nameUser={user.display_name}
                 questionAskedTime={questionAskedTime}
                 previewContent={previewContent}

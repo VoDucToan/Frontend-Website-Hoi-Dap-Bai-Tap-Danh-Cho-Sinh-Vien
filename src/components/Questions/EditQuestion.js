@@ -76,7 +76,7 @@ const EditQuestion = (props) => {
             const dataImagesEdit = await getImagesEdit(idEdit);
             if (dataImagesEdit && dataImagesEdit.EC === 0) {
                 const arrDataImagesEdit = dataImagesEdit.DT.map((imageEdit) => {
-                    return `http://localhost:8080/images/uploads/${imageEdit.file_name}`;
+                    return `${process.env.REACT_APP_URL_NODE}images/uploads/${imageEdit.file_name}`;
                 })
                 setInitialImageQuestions(arrDataImagesEdit);
             }
@@ -310,7 +310,7 @@ export default EditQuestion;
 //             const dataImagesPost = await getImagesPost(idpost)
 //             if (dataImagesPost && dataImagesPost.EC === 0) {
 //                 const arrDataImagesPost = dataImagesPost.DT.map((imagePost) => {
-//                     return `http://localhost:8080/images/uploads/${imagePost.file_name}`
+//                     return `${process.env.REACT_APP_URL_NODE}images/uploads/${imagePost.file_name}`
 //                 })
 //                 setImageQuestions(arrDataImagesPost)
 //             }
@@ -364,7 +364,7 @@ export default EditQuestion;
 //             const dataImagesPost = await getImagesPost(idpost)
 //             if (dataImagesPost && dataImagesPost.EC === 0) {
 //                 const arrDataImagesPost = dataImagesPost.DT.map((imagePost) => {
-//                     return `http://localhost:8080/images/uploads/${imagePost.file_name}`
+//                     return `${process.env.REACT_APP_URL_NODE}images/uploads/${imagePost.file_name}`
 //                 })
 //                 setImageQuestions(arrDataImagesPost)
 //             }

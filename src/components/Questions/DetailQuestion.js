@@ -47,7 +47,7 @@ const DetailQuestion = (props) => {
                 <div className="content-question" id="id-content-question"></div>
                 {imagesPost && imagesPost.length > 0 && imagesPost.map((image, index) => {
                     return (
-                        <img src={`http://localhost:8080/images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
+                        <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
                     )
                 })}
                 <ListTags listTags={listTagsByQuestion} />

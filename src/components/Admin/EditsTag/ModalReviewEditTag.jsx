@@ -210,7 +210,7 @@ function ModalReviewEditTag(props) {
                                                     {imagesEditedTag && imagesEditedTag.length > 0 &&
                                                         imagesEditedTag.map((image, index) => {
                                                             return (
-                                                                <img src={`http://localhost:8080/images/uploads/${image.file_name}`}
+                                                                <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`}
                                                                     className='img-thumbnail' key={index} />
                                                             )
                                                         })}
@@ -219,14 +219,14 @@ function ModalReviewEditTag(props) {
                                                     <h5>Hình ảnh chỉnh sửa</h5>
                                                     {imagesEdit && imagesEdit.length > 0 && imagesEdit.map((image, index) => {
                                                         return (
-                                                            <img src={`http://localhost:8080/images/uploads/${image.file_name}`}
+                                                            <img src={`${process.env.REACT_APP_URL_NODE}images/uploads/${image.file_name}`}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
                                                 </div>
                                             </div>
 
-                                            <ProposedAuthor avatarAuthor={`http://localhost:8080/images/uploads/${avatarProposedAuthor}`}
+                                            <ProposedAuthor avatarAuthor={`${process.env.REACT_APP_URL_NODE}images/uploads/${avatarProposedAuthor}`}
                                                 nameUser={nameUser}
                                                 proposedTime={proposedTime} />
                                         </div>

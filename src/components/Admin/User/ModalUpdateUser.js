@@ -25,7 +25,7 @@ function ModalUpdateUser(props) {
         setRoleUser(role);
         setLocationUser(location);
         setInitialAboutMe(aboutme);
-        setInitialImageUser([`http://localhost:8080/images/uploads/${image}`])
+        setInitialImageUser([`${process.env.REACT_APP_URL_NODE}images/uploads/${image}`])
     }, [show, username, role, location, aboutme])
 
     const handleClose = () => setShow(false);

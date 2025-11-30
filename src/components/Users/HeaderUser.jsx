@@ -14,7 +14,7 @@ const HeaderUser = (props) => {
             <div className="header-user">
                 <div className="avatar-user">
                     <img className="img-avatar-user "
-                        src={`http://localhost:8080/images/uploads/${user.avatar_file_name}`} alt="Avatar Author" />
+                        src={`${process.env.REACT_APP_URL_NODE}images/uploads/${user.avatar_file_name}`} alt="Avatar Author" />
                     <div className='info-avatar-user'>
                         <span className='display-name-avatar-user'>{user.display_name}</span>
                         <div className='member-user'>
