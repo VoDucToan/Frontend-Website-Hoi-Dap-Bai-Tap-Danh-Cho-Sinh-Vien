@@ -49,7 +49,7 @@ const Search = () => {
             <div className="results-container">
                 {results?.length > 0 && results.map((result) => {
                     return (
-                        <PostResult result={result} />
+                        <PostResult result={result} key={result.id} />
                     )
                 })}
             </div>
