@@ -6,6 +6,7 @@ import Editor from '../../../utils/Editor/Editor';
 import { getListTags, getListTagsByQuestion } from '../../../services/apiTagService';
 import { getImagesPost, updateQuestion } from '../../../services/apiQuestionService';
 import { toast } from 'react-toastify';
+import { getEditForPost, updateEditPost } from '../../../services/apiEditPostService';
 
 function ModalUpdateQuestion(props) {
     const { title, detail, status, id, resetPage } = props;
@@ -20,6 +21,7 @@ function ModalUpdateQuestion(props) {
     const [initialImageQuestions, setInitialImageQuestions] = useState([]);
     const [idQuestion, setIdQuestion] = useState(0);
     const [listTags, setListTags] = useState([]);
+    const [editQuestion, setEditQuestion] = useState({});
     const [resetImages, setResetImages] = useState(1);
 
     useEffect(() => {
@@ -38,6 +40,19 @@ function ModalUpdateQuestion(props) {
         setIdQuestion(id);
         setStatusQuestion(status);
     }, [show, title, detail, id, status])
+
+    const fetchEditQuestion = async () => {
+        if (id) {
+            const resEditPost = await getEditForPost(id);
+            if (resEditPost?.EC === 0) {
+                setEditQuestion(resEditPost.DT);
+            }
+        }
+    }
+
+    useEffect(() => {
+        fetchEditQuestion();
+    }, [id])
 
     useEffect(() => {
         // listTags && listTags.length > 0 && listTags.map((tag) => {
@@ -62,7 +77,7 @@ function ModalUpdateQuestion(props) {
                 const dataImagesPost = await getImagesPost(idQuestion);
                 if (dataImagesPost && dataImagesPost.EC === 0) {
                     const arrDataImagesPost = dataImagesPost.DT.map((imagePost) => {
-                        return `${process.env.REACT_APP_URL_NODE}/images/uploads/${imagePost.file_name}`;
+                        return imagePost.file_name;
                     })
                     setInitialImageQuestions(arrDataImagesPost);
                 }
@@ -127,14 +142,17 @@ function ModalUpdateQuestion(props) {
         })
         const data = await updateQuestion(idQuestion, titleQuestion, detailQuestion, plainTextDeTailQuestion,
             imageQuestions, listIdTags, statusQuestion);
-        if (data && data.EC === 0) {
-            toast.success("Cập nhật câu hỏi thành công");
-            resetPage();
-            handleClose();
-        }
-        else {
+        if (data && data.EC !== 0) {
             toast.error(data.EM);
         }
+        const dataUpdateEditPost = await updateEditPost(editQuestion.id, titleQuestion, detailQuestion,
+            plainTextDeTailQuestion, editQuestion.edit_summary, imageQuestions, listIdTags);
+        if (dataUpdateEditPost?.EC !== 0) {
+            toast.error(dataUpdateEditPost.EM);
+        }
+        toast.success("Cập nhật câu hỏi thành công");
+        resetPage();
+        handleClose();
     }
 
     useEffect(() => {

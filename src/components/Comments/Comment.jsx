@@ -5,6 +5,7 @@ import { deleteComment, editComment } from "../../services/apiCommentService";
 import { toast } from "react-toastify";
 import { MdModeEdit } from "react-icons/md";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Comment = (props) => {
     const { comment, author, handleResetPage, idUser } = props
@@ -14,6 +15,7 @@ const Comment = (props) => {
     const [plainTextComment, setPlainTextComment] = useState("");
     const [resetPage, setResetPage] = useState(1);
     const [isShowEditComment, setIsShowEditComment] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setInitialContentComment(comment.comment_text);
@@ -81,11 +83,15 @@ const Comment = (props) => {
                 !isShowEditComment ?
                     (
                         <div className="comment" >
-                            <VoteComment idComment={comment.id} />
+                            <div className="vote-comment-container">
+                                <VoteComment idComment={comment.id}
+                                    idAuthor={comment.created_by_user_id} />
+                            </div>
+
                             <div className="content-comment">
                                 <span id={comment.id + '-content-comment'}></span>
                                 <span className='signature-comment'>
-                                    <span className='author-comment'>{author}</span> - <span className='datetime-comment'>{comment.commentedTime}</span>
+                                    <span className='author-comment' onClick={() => navigate(`/users/${comment.created_by_user_id}`)}>{author}</span> - <span className='datetime-comment'>{comment.commentedTime}</span>
                                 </span>
                                 {comment.createdAt < comment.updatedAt && (
                                     <OverlayTrigger

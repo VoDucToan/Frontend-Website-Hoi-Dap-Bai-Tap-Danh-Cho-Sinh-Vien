@@ -71,7 +71,7 @@ const FollowedAnswer = (props) => {
                 idQuestion={idQuestion}
                 titleQuestion={question.post_title}
                 listTags={listTagsByQuestion}
-                avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
+                avatarAuthor={user.avatar_file_name}
                 nameUser={user.display_name}
                 questionAskedTime={questionAskedTime}
                 previewContent={previewContent}

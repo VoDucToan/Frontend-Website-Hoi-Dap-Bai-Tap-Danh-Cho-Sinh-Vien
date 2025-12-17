@@ -41,25 +41,26 @@ const getListEdits = (editStatus, page, limit) => {
     return axios.get(`api/v1/list-edits/${editStatus}?page=${page}&limit=${limit}`);
 }
 
-const rejectEditForPost = (idEdit, idUser, notificationType, notificationSummary, notificationResource) => {
+const rejectEditForPost = (idEdit) => {
     const data = {
-        idEdit, idUser, notificationType, notificationSummary, notificationResource
+        idEdit
     }
     return axios.put(`api/v1/reject-edit-for-post`, data);
 }
 
-const approveEditForPost = (idEdit, idUser, notificationType, notificationSummary, notificationResource) => {
+const approveEditForPost = (idEdit) => {
     const data = {
-        idEdit, idUser, notificationType, notificationSummary, notificationResource
+        idEdit
     }
     return axios.put(`api/v1/approve-edit-for-post`, data);
 }
 
-const updateEditPost = (idEdit, postTitle, postDetail, editSummary, editImages, listIdTags) => {
+const updateEditPost = (idEdit, postTitle, postDetail, postPlainDetail, editSummary, editImages, listIdTags) => {
     const form = new FormData()
     form.append('idEdit', idEdit)
     form.append('postTitle', postTitle)
     form.append('postDetail', postDetail)
+    form.append('postPlainDetail', postPlainDetail)
     form.append('editSummary', editSummary)
     editImages.forEach((editImage) => {
         form.append('fileImages', editImage)

@@ -85,7 +85,7 @@ const AnswerSaved = (props) => {
                                 navigate(`/questions/${idQuestion}`, { state: { idTargetAnswer: idAnswer } })
                             }}>Xem câu trả lời</span>
                         <MetaAuthor
-                            avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
+                            avatarAuthor={user.avatar_file_name}
                             nameUser={user.display_name}
                             questionAskedTime={questionAskedTime}
                             postType={2}

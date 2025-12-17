@@ -57,7 +57,7 @@ function ModalReviewEditQuestion(props) {
         if (previousEditId) {
             const res = await getListTagsByEdit(previousEditId);
             if (res && res.EC === 0) {
-                setListTagsByEditedQuestion(res.DT.Tags);
+                setListTagsByEditedQuestion(res.DT.tags);
             }
         }
     }
@@ -72,7 +72,7 @@ function ModalReviewEditQuestion(props) {
         if (idEdit) {
             const res = await getListTagsByEdit(idEdit);
             if (res && res.EC === 0) {
-                setListTagsByEdit(res.DT.Tags);
+                setListTagsByEdit(res.DT.tags);
             }
         }
     }
@@ -208,8 +208,7 @@ function ModalReviewEditQuestion(props) {
     const handleReject = async () => {
         const reply = window.confirm("Bạn muốn từ chối chỉnh sửa này?");
         if (reply) {
-            const res = await rejectEditForPost(idEdit, editedByUser, "Chỉnh sửa",
-                "Bản chỉnh sửa của bạn bị từ chối", `/posts/${idQuestion}/edit`);
+            const res = await rejectEditForPost(idEdit);
             if (res && res.EC === 0) {
                 toast.success('Từ chối chỉnh sửa thành công');
                 setShow(false);
@@ -223,8 +222,7 @@ function ModalReviewEditQuestion(props) {
     const handleApprove = async () => {
         const reply = window.confirm("Bạn muốn chấp nhận chỉnh sửa này?");
         if (reply) {
-            const res = await approveEditForPost(idEdit, editedByUser, "Chỉnh sửa",
-                "Bản chỉnh sửa của bạn được chấp nhận", `/questions/${idQuestion}`);
+            const res = await approveEditForPost(idEdit);
             if (res && res.EC === 0) {
                 toast.success('Chấp nhận chỉnh sửa thành công');
                 setShow(false);
@@ -256,7 +254,7 @@ function ModalReviewEditQuestion(props) {
                                 idQuestion={idQuestion}
                                 idAuthor={question.created_by_user_id}
                                 titleQuestion={question.post_title}
-                                avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
+                                avatarAuthor={user.avatar_file_name}
                                 nameUser={user.display_name}
                                 questionAskedTime={question.askedTime}
                                 reputation={user.reputation}
@@ -289,7 +287,7 @@ function ModalReviewEditQuestion(props) {
                                                     <h5>Hình ảnh câu hỏi</h5>
                                                     {imagesEditedQuestion && imagesEditedQuestion.length > 0 && imagesEditedQuestion.map((image, index) => {
                                                         return (
-                                                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
+                                                            <img src={image.file_name}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
@@ -298,7 +296,7 @@ function ModalReviewEditQuestion(props) {
                                                     <h5>Hình ảnh chỉnh sửa</h5>
                                                     {imagesEdit && imagesEdit.length > 0 && imagesEdit.map((image, index) => {
                                                         return (
-                                                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
+                                                            <img src={image.file_name}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
@@ -309,7 +307,7 @@ function ModalReviewEditQuestion(props) {
                                                 id="id-content-edit-revision-detail-tags">
                                             </div>
 
-                                            <ProposedAuthor avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${avatarProposedAuthor}`} nameUser={nameUser}
+                                            <ProposedAuthor avatarAuthor={avatarProposedAuthor} nameUser={nameUser}
                                                 postProposedTime={postProposedTime} />
                                             <div className='mb-3'>
                                                 <Follow idPost={idQuestion} postType={question.post_type_id} idAuthor={question.created_by_user_id} />

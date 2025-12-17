@@ -63,7 +63,8 @@ const ManageUsers = () => {
                                     <ModalUpdateUser id={user.id} username={user.display_name} email={user.email_address}
                                         role={user.role_id} isverifyemail={user.is_verify_email} createdate={user.createdAt}
                                         updatedate={user.updatedAt} location={user.location} aboutme={user.about_me}
-                                        resetPage={handleResetPage} fetchListUsers={fetchListUsers} image={user.avatar_file_name} />
+                                        resetPage={handleResetPage} fetchListUsers={fetchListUsers} image={user.avatar_file_name}
+                                        reputation={user.reputation} />
                                     {/* <button className="btn btn-danger" >Delete</button> */}
                                 </td>
                             </tr>

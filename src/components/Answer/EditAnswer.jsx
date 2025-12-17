@@ -86,7 +86,7 @@ const EditAnswer = (props) => {
             const dataImagesEdit = await getImagesEdit(idEdit);
             if (dataImagesEdit && dataImagesEdit.EC === 0) {
                 const arrDataImagesEdit = dataImagesEdit.DT.map((imageEdit) => {
-                    return `${process.env.REACT_APP_URL_NODE}/images/uploads/${imageEdit.file_name}`;
+                    return imageEdit.file_name;
                 })
                 setInitialImageAnswers(arrDataImagesEdit);
             }
@@ -148,7 +148,7 @@ const EditAnswer = (props) => {
 
         if (listRevisionsPost[0].edit_status === 0) {
             const dataUpdateEditPost = await updateEditPost(listRevisionsPost[0].id, '',
-                detailAnswer, editSummary, imageAnswers, []);
+                detailAnswer, plainTextDeTailAnswer, editSummary, imageAnswers, []);
             if (dataUpdateEditPost && dataUpdateEditPost.EC === 0) {
                 toast.success("Gửi chỉnh sửa câu trả lời thành công");
                 handleQuit();
@@ -189,7 +189,7 @@ const EditAnswer = (props) => {
                 <div className="mb-3" id="id-content-question-edit"></div>
                 {imagesQuestion && imagesQuestion.length > 0 && imagesQuestion.map((image, index) => {
                     return (
-                        <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
+                        <img src={image.file_name} className='img-thumbnail' key={index} />
                     )
                 })}
             </div>

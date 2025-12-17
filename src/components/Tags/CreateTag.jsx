@@ -73,6 +73,9 @@ const CreateTag = () => {
         else if (res?.EC === -1) {
             toast.error("Bạn phải đạt được 300 điểm danh tiếng để mở khóa chức năng tạo thẻ mới");
         }
+        else if (res?.EC === -2) {
+            toast.error("Bạn không đủ điểm danh tiếng để tạo thẻ mới");
+        }
         else {
             toast.error("Gửi thẻ thất bại");
         }

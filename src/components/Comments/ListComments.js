@@ -95,7 +95,7 @@ const ListComments = (props) => {
             handleResetPage();
         }
         else if (data?.EC === -1) {
-            toast.error('Bạn phải đặt được 4 điểm danh tiếng để mở khóa chức năng bình luận');
+            toast.error('Bạn phải đặt được 20 điểm danh tiếng để mở khóa chức năng bình luận');
 
         }
         else {

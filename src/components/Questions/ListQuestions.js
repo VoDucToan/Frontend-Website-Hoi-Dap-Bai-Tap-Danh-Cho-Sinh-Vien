@@ -18,7 +18,7 @@ const ListQuestions = (props) => {
     const [noAnswers, setNoAnswers] = useState(false);
     const [noUpVoted, setNoUpVoted] = useState(false);
     const [noAcceptedAnswer, setNoAcceptedAnswer] = useState(false);
-    const [dayOlds, setDayOlds] = useState('');
+    const [daysOld, setDaysOld] = useState('');
     const [typeOrder, setTypeOrder] = useState('vote');
     const [textQuestion, setTextQuestion] = useState('');
 
@@ -35,7 +35,7 @@ const ListQuestions = (props) => {
     const fetchListQuestions = async (watchedTags, ignoredTags) => {
         let data = await getListQuestions({
             page, limit, status: true, noAnswers, noUpVoted,
-            noAcceptedAnswer, dayOlds, typeOrder, watchedTags, ignoredTags
+            noAcceptedAnswer, daysOld, typeOrder, watchedTags, ignoredTags
         }
         );
         if (data && data.EC === 0) {
@@ -45,7 +45,7 @@ const ListQuestions = (props) => {
                 noAnswers ? 'không có câu trả lời'
                     : noUpVoted ? 'không có phiếu bầu'
                         : noAcceptedAnswer ? 'không có câu trả lời được chấp nhận'
-                            : dayOlds ? `${dayOlds} ngày trước`
+                            : daysOld ? `${daysOld} ngày trước`
                                 : ''
             );
         }
@@ -133,7 +133,7 @@ const ListQuestions = (props) => {
     }
 
     const getDayOlds = (e) => {
-        setDayOlds(e.target.value);
+        setDaysOld(e.target.value);
     }
 
     const getTypeOrder = (e) => {
@@ -141,7 +141,7 @@ const ListQuestions = (props) => {
     }
 
     const validateFilterQuestions = () => {
-        if (dayOlds !== '' && Number(dayOlds) <= 0) {
+        if (daysOld !== '' && Number(daysOld) <= 0) {
             toast.error("Số ngày trước đó của câu hỏi phải lớn hơn hoặc bằng 1")
             return false;
         }
@@ -226,9 +226,9 @@ const ListQuestions = (props) => {
                                     </label>
                                 </div>
                                 <div className="form-day-olds">
-                                    <input type="number" className="form-control input-day-olds" id="dayOlds"
-                                        value={dayOlds} onChange={(e) => getDayOlds(e)} />
-                                    <label htmlFor="dayOlds" className="col-form-label ">Ngày trước</label>
+                                    <input type="number" className="form-control input-day-olds" id="daysOld"
+                                        value={daysOld} onChange={(e) => getDayOlds(e)} />
+                                    <label htmlFor="daysOld" className="col-form-label ">Ngày trước</label>
                                 </div>
                             </div>
                             <div className="sorted-by">

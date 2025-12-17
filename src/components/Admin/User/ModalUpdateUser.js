@@ -8,7 +8,7 @@ import UploadAndDisplayImage from '../../../utils/UploadImage/UploadAndDisplayIm
 
 function ModalUpdateUser(props) {
     const { id, username, email, role, isverifyemail, createdate, updatedate,
-        location, aboutme, resetPage, image, fetchListUsers } = props;
+        location, aboutme, resetPage, image, fetchListUsers, reputation } = props;
 
     const [show, setShow] = useState(false);
     const [userName, setUserName] = useState("");
@@ -19,14 +19,16 @@ function ModalUpdateUser(props) {
     const [initialAboutMe, setInitialAboutMe] = useState("");
     const [imageUser, setImageUser] = useState([]);
     const [initialImageUser, setInitialImageUser] = useState([]);
+    const [reputationPoint, setReputationPoint] = useState(1);
 
     useEffect(() => {
         setUserName(username);
         setRoleUser(role);
         setLocationUser(location);
         setInitialAboutMe(aboutme);
-        setInitialImageUser([`${process.env.REACT_APP_URL_NODE}/images/uploads/${image}`])
-    }, [show, username, role, location, aboutme])
+        setInitialImageUser([image])
+        setReputationPoint(reputation);
+    }, [show, username, role, location, aboutme, reputation])
 
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -35,6 +37,10 @@ function ModalUpdateUser(props) {
 
     const getRoleUser = (e) => {
         setRoleUser(e.target.value);
+    }
+
+    const getReputationPoint = (e) => {
+        setReputationPoint(e.target.value);
     }
 
     const getUserName = (e) => {
@@ -62,6 +68,10 @@ function ModalUpdateUser(props) {
             toast.error("Tên đại diện phải chứa ít nhất 3 ký tự")
             return false;
         }
+        if (reputationPoint < 1) {
+            toast.error("Điểm danh tiếng phải lớn hơn hoặc bằng 1")
+            return false;
+        }
         return true;
     }
 
@@ -71,7 +81,7 @@ function ModalUpdateUser(props) {
             return;
         }
 
-        const data = await updateUser(id, roleUser, userName, locationUser, aboutMe, imageUser);
+        const data = await updateUser(id, roleUser, userName, locationUser, aboutMe, imageUser, reputationPoint);
         if (data && data.EC === 0) {
             toast.success("Cập nhật người dùng thành công");
             fetchListUsers();
@@ -93,19 +103,24 @@ function ModalUpdateUser(props) {
                 <Modal.Body>
                     <div className="modal-update-user-container px-4">
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label for="inputID" class="form-label">ID</label>
                                 <input type="text" class="form-control" id="inputID" value={id} disabled />
                             </div>
                             <div class="col-md-3">
-                                <label for="inputRole" class="form-label">Role</label>
+                                <label for="inputReputation" class="form-label">Điểm danh tiếng</label>
+                                <input type="number" class="form-control" id="inputReputation"
+                                    value={reputationPoint} onChange={(e) => getReputationPoint(e)} />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="inputRole" class="form-label">Vai trò</label>
                                 <select id="inputRole" class="form-select" value={roleUser} onChange={(e) => { getRoleUser(e) }}>
                                     <option value={1}>User</option>
                                     <option value={2}>Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="inputVerifyEmail" class="form-label">Verify Email</label>
+                                <label for="inputVerifyEmail" class="form-label">Xác thực Email</label>
                                 <select id="inputVerifyEmail" class="form-select" value={isverifyemail} disabled >
                                     <option value={false}>False</option>
                                     <option value={true}>True</option>
@@ -116,17 +131,17 @@ function ModalUpdateUser(props) {
                                 <input type="email" class="form-control" id="inputEmail4" value={email} disabled />
                             </div>
                             <div class="col-md-6">
-                                <label for="inputUsername" class="form-label">Username</label>
+                                <label for="inputUsername" class="form-label">Tên người dùng</label>
                                 <input type="text" class="form-control" id="inputUsername" value={userName}
                                     onChange={(e) => { getUserName(e) }} />
                             </div>
                             <div class="col-md-12">
-                                <label for="inputLocation" class="form-label">Location</label>
+                                <label for="inputLocation" class="form-label">Vị trí</label>
                                 <input type="text" class="form-control" id="inputLocation" value={locationUser}
                                     onChange={(e) => { getLocationUser(e) }} />
                             </div>
                             <div class="col-12">
-                                <label class="form-label">About Me</label>
+                                <label class="form-label">Về tôi</label>
                                 <Editor getContentEditor={getContentEditor} id={0} getPlainTextEditor={getPlainTextEditor}
                                     initialHtml={initialAboutMe} initialHeight={"210px"} />
                             </div>

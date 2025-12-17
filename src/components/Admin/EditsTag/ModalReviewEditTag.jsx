@@ -128,8 +128,7 @@ function ModalReviewEditTag(props) {
     const handleReject = async () => {
         const reply = window.confirm("Bạn muốn từ chối chỉnh sửa này?");
         if (reply) {
-            const res = await rejectEditForTag(idEdit, editedByUser, "Chỉnh sửa",
-                "Bản chỉnh sửa của bạn bị từ chối", `/edit-tag-wiki/${idTag}`);
+            const res = await rejectEditForTag(idEdit);
             if (res && res.EC === 0) {
                 toast.success('Từ chối chỉnh sửa thành công');
                 setShow(false);
@@ -143,8 +142,7 @@ function ModalReviewEditTag(props) {
     const handleApprove = async () => {
         const reply = window.confirm("Bạn muốn chấp nhận chỉnh sửa này?");
         if (reply) {
-            const res = await approveEditForTag(idEdit, editedByUser, "Chỉnh sửa",
-                "Bản chỉnh sửa của bạn được chấp nhận", `/tags/${idTag}/info`);
+            const res = await approveEditForTag(idEdit);
             if (res && res.EC === 0) {
                 toast.success('Chấp nhận chỉnh sửa thành công');
                 setShow(false);
@@ -167,11 +165,11 @@ function ModalReviewEditTag(props) {
                     <div className='review-suggested-edit-tag-container'>
                         <div className='following-edit-tag'>
                             <h4>Đánh giá chỉnh sửa cho thẻ</h4>
-                            <div className='tag-summary-stats'>
+                            {/* <div className='tag-summary-stats'>
                                 <span className='number-views'>
                                     3582399 Lượt xem
                                 </span>
-                            </div>
+                            </div> */}
                             <div className='tag-summary-content'>
                                 <div>
                                     <h5 className="d-inline">Thông tin về </h5>
@@ -210,7 +208,7 @@ function ModalReviewEditTag(props) {
                                                     {imagesEditedTag && imagesEditedTag.length > 0 &&
                                                         imagesEditedTag.map((image, index) => {
                                                             return (
-                                                                <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
+                                                                <img src={image.file_name}
                                                                     className='img-thumbnail' key={index} />
                                                             )
                                                         })}
@@ -219,14 +217,14 @@ function ModalReviewEditTag(props) {
                                                     <h5>Hình ảnh chỉnh sửa</h5>
                                                     {imagesEdit && imagesEdit.length > 0 && imagesEdit.map((image, index) => {
                                                         return (
-                                                            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`}
+                                                            <img src={image.file_name}
                                                                 className='img-thumbnail' key={index} />
                                                         )
                                                     })}
                                                 </div>
                                             </div>
 
-                                            <ProposedAuthor avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${avatarProposedAuthor}`}
+                                            <ProposedAuthor avatarAuthor={avatarProposedAuthor}
                                                 nameUser={nameUser}
                                                 proposedTime={proposedTime} />
                                         </div>

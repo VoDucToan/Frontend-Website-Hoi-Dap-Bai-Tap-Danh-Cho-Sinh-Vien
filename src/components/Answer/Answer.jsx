@@ -41,14 +41,15 @@ const Answer = (props) => {
             <div >
                 <VotePost idpost={idAnswer} idPostType={2} idQuestion={idQuestion}
                     initialAccepted={idAnswer === idAcceptedAnswer ? true : false}
-                    getIdAcceptedAnswer={getIdAcceptedAnswer} idAuthor={idAuthor} />
+                    getIdAcceptedAnswer={getIdAcceptedAnswer} idAuthor={idAuthorAsked}
+                    idAuthorQuestion={idAuthor} />
             </div>
             <div className="detail-answer">
                 <div className="content-answer"
                     dangerouslySetInnerHTML={{ __html: contentAnswer }}></div>
                 {imagesByAnswers && imagesByAnswers.length > 0 && imagesByAnswers.map((image, index) => {
                     return (
-                        <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${image.file_name}`} className='img-thumbnail' key={index} />
+                        <img src={image.file_name} className='img-thumbnail' key={index} />
                     )
                 })}
                 <Signature idAuthorAsked={idAuthorAsked} askedTime={askedTime}

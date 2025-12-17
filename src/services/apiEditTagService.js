@@ -8,6 +8,10 @@ const getImagesForEditTag = (idEditTag) => {
     return axios.get(`api/v1/images-for-edit-tag/${idEditTag}`);
 }
 
+const getEditForTag = (idTag) => {
+    return axios.get(`api/v1/edit-for-tag/${idTag}`);
+}
+
 const editTag = (idUser, idTag, tagName, tagSummary, tagDescription, editSummary, editImages, previousEditId) => {
     const form = new FormData()
     form.append('idUser', idUser)
@@ -44,21 +48,22 @@ const getEditTag = (idEditTag) => {
     return axios.get(`api/v1/edittag/${idEditTag}`);
 }
 
-const rejectEditForTag = (idEdit, idUser, notificationType, notificationSummary, notificationResource) => {
+const rejectEditForTag = (idEdit) => {
     const data = {
-        idEdit, idUser, notificationType, notificationSummary, notificationResource
+        idEdit
     }
     return axios.put(`api/v1/reject-edit-for-tag`, data);
 }
 
-const approveEditForTag = (idEdit, idUser, notificationType, notificationSummary, notificationResource) => {
+const approveEditForTag = (idEdit) => {
     const data = {
-        idEdit, idUser, notificationType, notificationSummary, notificationResource
+        idEdit
     }
     return axios.put(`api/v1/approve-edit-for-tag`, data);
 }
 
 export {
     getEditTagForUser, getImagesForEditTag, editTag, updateEditTag,
-    getListEditsTag, getEditTag, rejectEditForTag, approveEditForTag
+    getListEditsTag, getEditTag, rejectEditForTag, approveEditForTag,
+    getEditForTag
 };

@@ -5,6 +5,7 @@ import UploadAndDisplayImage from '../../../utils/UploadImage/UploadAndDisplayIm
 import Editor from '../../../utils/Editor/Editor';
 import { getImagesTag, updateTag } from '../../../services/apiTagService';
 import { toast } from 'react-toastify';
+import { updateEditTag, getEditForTag } from '../../../services/apiEditTagService';
 
 function ModalUpdateTag(props) {
     const { tagname, tagsummary, status, tagwiki, idtag, fetchTags } = props;
@@ -18,6 +19,20 @@ function ModalUpdateTag(props) {
     const [plainTextTagWiki, setPlainTextTagWiki] = useState("");
     const [initialImageTag, setInitialImageTag] = useState([]);
     const [imageTag, setImageTag] = useState([]);
+    const [editTag, setEditTag] = useState({});
+
+    const fetchEditTag = async () => {
+        if (idtag) {
+            const res = await getEditForTag(idtag);
+            if (res?.EC === 0) {
+                setEditTag(res.DT);
+            }
+        }
+    }
+
+    useEffect(() => {
+        fetchEditTag();
+    }, [idtag])
 
     useEffect(() => {
         setTagName(tagname);
@@ -30,7 +45,7 @@ function ModalUpdateTag(props) {
         const resImagesTag = await getImagesTag(idtag);
         if (resImagesTag && resImagesTag.EC === 0) {
             const arrDataImagesTag = resImagesTag.DT.map((imageTag) => {
-                return `${process.env.REACT_APP_URL_NODE}/images/uploads/${imageTag.file_name}`;
+                return imageTag.file_name;
             })
             setInitialImageTag(arrDataImagesTag);
         }
@@ -94,14 +109,19 @@ function ModalUpdateTag(props) {
         }
 
         const data = await updateTag(idtag, tagName, tagSummary, tagWiki, statusTag, imageTag);
-        if (data && data.EC === 0) {
-            toast.success("Cập nhật thẻ thành công");
-            handleClose();
-            await fetchTags();
-        }
-        else {
+        if (data && data.EC !== 0) {
             toast.error(data.EM);
         }
+
+        const dataUpdateEditTag = await updateEditTag(editTag.id, tagName, tagSummary,
+            tagWiki, editTag.edit_summary, imageTag);
+        if (dataUpdateEditTag?.EC !== 0) {
+            toast.error(dataUpdateEditTag.EM);
+        }
+
+        toast.success("Cập nhật thẻ thành công");
+        handleClose();
+        await fetchTags();
     }
 
     return (

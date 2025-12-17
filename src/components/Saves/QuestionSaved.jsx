@@ -75,7 +75,7 @@ const QuestionSaved = (props) => {
                 idQuestion={idQuestion}
                 titleQuestion={titleQuestion}
                 listTags={listTagsByQuestion}
-                avatarAuthor={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
+                avatarAuthor={user.avatar_file_name}
                 nameUser={user.display_name}
                 questionAskedTime={questionAskedTime}
                 reputation={user.reputation}

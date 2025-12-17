@@ -6,6 +6,10 @@
         border-bottom: 1px solid #e0dcdc;
         padding: 5px 0;
 
+        .vote-comment-container {
+            flex-basis: 26px;
+        }
+
         .content-comment {
             font-size: 14px;
             font-weight: 400;

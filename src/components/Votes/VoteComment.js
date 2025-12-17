@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const VoteComment = (props) => {
-    const { idComment } = props;
+    const { idComment, idAuthor } = props;
     const [numberVotes, setNumberVotes] = useState(0);
     const [voteType, setVoteType] = useState(0)
 
@@ -63,17 +63,22 @@ const VoteComment = (props) => {
     return (
         <div className="vote-comment">
             <div className="amount-votes-comment">{numberVotes}</div>
-            {voteType === 1 ?
-                (
-                    <div className={"arrow-up arrow-up-check"}
-                        onClick={() => unvote()}><ImArrowUp /></div>
-                )
-                :
-                (
-                    <div className={"arrow-up"}
-                        onClick={() => increaseVote()}><ImArrowUp /></div>
-                )
-            }
+            {idAuthor !== idUser && (
+                <>
+                    {voteType === 1 ?
+                        (
+                            <div className={"arrow-up arrow-up-check"}
+                                onClick={() => unvote()}><ImArrowUp /></div>
+                        )
+                        :
+                        (
+                            <div className={"arrow-up"}
+                                onClick={() => increaseVote()}><ImArrowUp /></div>
+                        )
+                    }
+                </>
+            )}
+
         </div>
     )
 }

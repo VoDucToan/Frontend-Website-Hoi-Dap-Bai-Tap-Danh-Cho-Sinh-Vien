@@ -15,7 +15,7 @@ import ModalSaveItem from "../Saves/ModalSaveItem";
 
 const VotePost = (props) => {
     const { idpost, idPostType, idQuestion, initialAccepted, getIdAcceptedAnswer,
-        idAuthor
+        idAuthor, idAuthorQuestion
     } = props;
     const [numberVotes, setNumberVotes] = useState(0)
     const [voteType, setVoteType] = useState(0)
@@ -91,7 +91,7 @@ const VotePost = (props) => {
             fetchNumberVotes();
         }
         else if (res?.EC === -1) {
-            toast.error("Bạn phải đạt được 15 điểm danh tiếng để mở khóa chức năng bình chọn lên");
+            toast.error("Bạn phải đạt được 50 điểm danh tiếng để mở khóa chức năng bình chọn lên");
         }
         else if (res?.EC === -2) {
             toast.error("Bạn không đủ điểm danh tiếng để tăng bình chọn");
@@ -110,6 +110,12 @@ const VotePost = (props) => {
         if (res?.EC === 0) {
             fetchVoteType();
             fetchNumberVotes();
+        }
+        else if (res?.EC === -1) {
+            toast.error("Bạn phải đạt được 100 điểm danh tiếng để mở khóa chức năng bình chọn xuống");
+        }
+        else if (res?.EC === -2) {
+            toast.error("Bạn không đủ điểm danh tiếng để giảm bình chọn");
         }
         else {
             toast.error(res.EM);
@@ -131,7 +137,7 @@ const VotePost = (props) => {
             {idPostType === 2 &&
                 (
                     <>
-                        {idAuthor === idUser ?
+                        {idAuthorQuestion === idUser ?
                             (
                                 <>
                                     {isAccepted ?

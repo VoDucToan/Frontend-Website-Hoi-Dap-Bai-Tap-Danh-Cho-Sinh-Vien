@@ -12,7 +12,7 @@ const UserBrowser = (props) => {
 
     return (
         <div className='user-browser-container'>
-            <img src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${user.avatar_file_name}`}
+            <img src={user.avatar_file_name}
                 className='avatar-user' onClick={() => handleRedirectUser()} />
             <div className='user-info'>
                 <span className='user-info-name'

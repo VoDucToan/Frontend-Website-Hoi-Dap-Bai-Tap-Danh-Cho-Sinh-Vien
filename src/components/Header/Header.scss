@@ -24,7 +24,6 @@
     }
 
     .avatar-author-container {
-        height: 40px;
         cursor: pointer;
         padding: 5px;
 
@@ -33,7 +32,8 @@
         }
 
         .img-avatar-author {
-            height: 100%;
+            height: 30px;
+            width: 30px;
         }
 
         .reputation-author {

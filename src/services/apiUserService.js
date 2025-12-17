@@ -36,13 +36,14 @@ const getListUsers = (page, limit, search) => {
     return axios.get(`api/v1/list-users?page=${page}&limit=${limit}&search=${search}`);
 }
 
-const updateUser = (idUser, idRole, userName, locationUser, aboutMe, avatarImage) => {
+const updateUser = (idUser, idRole, userName, locationUser, aboutMe, avatarImage, reputation) => {
     const form = new FormData();
     form.append('idUser', idUser)
     form.append('idRole', idRole)
     form.append('userName', userName)
     form.append('locationUser', locationUser)
     form.append('aboutMe', aboutMe)
+    form.append('reputation', reputation)
     avatarImage.forEach((img) => {
         form.append('fileImage', img)
     })

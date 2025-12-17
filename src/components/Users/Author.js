@@ -30,7 +30,7 @@ const Author = (props) => {
                 <div className="information-author">
                     <div className="avatar-author">
                         <img className="img-avatar-author"
-                            src={`${process.env.REACT_APP_URL_NODE}/images/uploads/${author.avatar_file_name}`}
+                            src={author.avatar_file_name}
                             alt="Avatar Author" onClick={() => navigate(`/users/${idAuthor}`)} />
                     </div>
                     <div className="detail-author">
