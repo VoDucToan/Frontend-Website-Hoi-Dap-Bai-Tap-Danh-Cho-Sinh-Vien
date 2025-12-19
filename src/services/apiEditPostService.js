@@ -1,11 +1,12 @@
 import axios from "../utils/Axios/axiosCustomize";
 
-const editPost = (idUser, idPost, titlePost, detailPost, editSummary, editImages, listIdTags, previousEditId) => {
+const editPost = (idUser, idPost, titlePost, detailPost, postPlainDetail, editSummary, editImages, listIdTags, previousEditId) => {
     const form = new FormData()
     form.append('idUser', idUser)
     form.append('idPost', idPost)
     form.append('titlePost', titlePost)
     form.append('detailPost', detailPost)
+    form.append('postPlainDetail', postPlainDetail)
     form.append('editSummary', editSummary)
     form.append('previousEditId', previousEditId)
     editImages.forEach((editImage) => {

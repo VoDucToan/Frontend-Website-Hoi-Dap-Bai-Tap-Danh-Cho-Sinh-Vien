@@ -181,7 +181,7 @@ const EditQuestion = (props) => {
         }
         else if (listRevisionsPost[0].edit_status === 1) {
             const dataEditPost = await editPost(idUser, idQuestion, titleQuestion, detailQuestion,
-                editSummary, imageQuestions, listIdTags, listRevisionsPost[0].id);
+                plainTextDeTailQuestion, editSummary, imageQuestions, listIdTags, listRevisionsPost[0].id);
             if (dataEditPost && dataEditPost.EC === 0) {
                 toast.success("Gửi chỉnh sửa câu hỏi thành công");
                 handleQuit();

@@ -159,7 +159,7 @@ const EditAnswer = (props) => {
         }
         else if (listRevisionsPost[0].edit_status === 1) {
             const dataEditPost = await editPost(idUser, idAnswer, '', detailAnswer,
-                editSummary, imageAnswers, [], listRevisionsPost[0].id);
+                plainTextDeTailAnswer, editSummary, imageAnswers, [], listRevisionsPost[0].id);
             if (dataEditPost && dataEditPost.EC === 0) {
                 toast.success("Gửi chỉnh sửa câu trả lời thành công");
                 handleQuit();
