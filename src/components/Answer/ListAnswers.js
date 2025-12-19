@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import ListComments from "../Comments/ListComments";
-import VotePost from "../Votes/VotePost";
 import './ListAnswers.scss';
-import { getListAnswers, getNumberAnswers, getPageNumberByAnswer, handleCreateAnswer } from "../../services/apiAnswerService";
+import { getListAnswers, getPageNumberByAnswer, handleCreateAnswer } from "../../services/apiAnswerService";
 import Editor from "../../utils/Editor/Editor";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
-import Signature from "../Post/Signature";
 import UploadAndDisplayImage from "../../utils/UploadImage/UploadAndDisplayImage";
-import { getImagesPost } from "../../services/apiQuestionService";
 import Answer from "./Answer";
 import { useLocation } from "react-router-dom";
 
@@ -25,11 +21,17 @@ const ListAnswers = (props) => {
     const [limit, setLimit] = useState(5);
     const [totalPages, setTotalPages] = useState(0)
     const [typeOrder, setTypeOrder] = useState('vote')
+    const [idTargetAnswer, setIdTargetAnswer] = useState(null);
 
     const idUser = useSelector(state => state.auth.user.id);
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const { state } = useLocation();
-    const { idTargetAnswer } = state || {};
+
+    useEffect(() => {
+        if (state?.idTargetAnswer) {
+            setIdTargetAnswer(state.idTargetAnswer);
+        }
+    }, [state])
 
     useEffect(() => {
         const fetchListAnswers = async () => {
@@ -59,7 +61,7 @@ const ListAnswers = (props) => {
     }, [idTargetAnswer, idQuestion, limit])
 
     useEffect(() => {
-        if (idTargetAnswer) {
+        if (idTargetAnswer && listAnswers && listAnswers.length > 0) {
             const el = document.getElementById(`${idTargetAnswer}-answer-container`);
             if (el) {
                 el.scrollIntoView({ block: "center" });
@@ -69,6 +71,7 @@ const ListAnswers = (props) => {
                     el.style.backgroundColor = "transparent";
                 }, 2000)
             }
+            setIdTargetAnswer(null);
         }
     }, [idTargetAnswer, listAnswers]);
 
