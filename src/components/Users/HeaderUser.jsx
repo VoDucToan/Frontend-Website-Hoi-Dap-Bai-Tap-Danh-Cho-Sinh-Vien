@@ -30,12 +30,14 @@ const HeaderUser = (props) => {
 
                     </div>
                 </div>
-                <Link to={`/users/edit/${user.id}`} className='nav-link'>
-                    <div className="btn-edit-profile">
-                        <MdEdit />
-                        <span className='text-edit-profile'>Chỉnh sửa thông tin</span>
-                    </div>
-                </Link>
+                {user.id === idUser && (
+                    <Link to={`/users/edit/${user.id}`} className='nav-link'>
+                        <div className="btn-edit-profile">
+                            <MdEdit />
+                            <span className='text-edit-profile'>Chỉnh sửa thông tin</span>
+                        </div>
+                    </Link>
+                )}
             </div>
             <nav className="nav nav-pills navigate-body-user">
                 <NavLink to={`/users/${user.id}`} className='nav-link profile-user ' activeclassname="active">

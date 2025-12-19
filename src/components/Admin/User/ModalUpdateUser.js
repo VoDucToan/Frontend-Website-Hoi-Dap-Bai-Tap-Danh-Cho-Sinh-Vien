@@ -94,7 +94,7 @@ function ModalUpdateUser(props) {
 
     return (
         <>
-            <button className="btn btn-warning me-2" onClick={handleShow}>Update</button>
+            <button className="btn btn-warning me-2" onClick={handleShow}>Cập nhật</button>
 
             <Modal show={show} onHide={handleClose} backdrop="static" centered size="xl">
                 <Modal.Header closeButton>
@@ -163,10 +163,10 @@ function ModalUpdateUser(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Thoát
                     </Button>
                     <Button variant="primary" onClick={() => handleSaveChanges()}>
-                        Save Changes
+                        Lưu thay đổi
                     </Button>
                 </Modal.Footer>
             </Modal>

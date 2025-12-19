@@ -7,7 +7,7 @@ const ManageUsers = () => {
     const [listUsers, setListUsers] = useState([]);
     const [resetPage, setResetPage] = useState(1);
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(5);
     const [totalPages, setTotalPages] = useState(0);
 
     const fetchListUsers = async () => {

@@ -235,7 +235,7 @@ function ModalReviewEditQuestion(props) {
 
     return (
         <>
-            <button className="btn btn-info" onClick={handleShow}>Review</button>
+            <button className="btn btn-info" onClick={handleShow}>Đánh giá</button>
 
             <Modal show={show} onHide={handleClose} backdrop="static" centered size="xl">
                 <Modal.Header closeButton>

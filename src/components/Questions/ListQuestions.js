@@ -219,12 +219,12 @@ const ListQuestions = (props) => {
                                         Không có câu trả lời được chấp nhận
                                     </label>
                                 </div>
-                                <div className="form-check">
+                                {/* <div className="form-check">
                                     <input className="form-check-input" type="checkbox" value="" id="hasBounty" />
                                     <label className="form-check-label" htmlFor="hasBounty">
                                         Có điểm thưởng
                                     </label>
-                                </div>
+                                </div> */}
                                 <div className="form-day-olds">
                                     <input type="number" className="form-control input-day-olds" id="daysOld"
                                         value={daysOld} onChange={(e) => getDayOlds(e)} />

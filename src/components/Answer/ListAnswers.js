@@ -22,7 +22,7 @@ const ListAnswers = (props) => {
     const [imageAnswers, setImageAnswers] = useState([]);
     const [resetPage, setResetPage] = useState(1);
     const [page, setPage] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(5);
     const [totalPages, setTotalPages] = useState(0)
     const [typeOrder, setTypeOrder] = useState('vote')
 
