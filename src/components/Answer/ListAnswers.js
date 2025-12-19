@@ -42,7 +42,7 @@ const ListAnswers = (props) => {
             }
         }
         fetchListAnswers();
-    }, [resetPage, page, limit, typeOrder])
+    }, [resetPage, page, limit, typeOrder, idQuestion])
 
     const fetchPageTargetAnswer = async () => {
         if (idTargetAnswer && idQuestion && limit) {
@@ -70,8 +70,8 @@ const ListAnswers = (props) => {
                 setTimeout(() => {
                     el.style.backgroundColor = "transparent";
                 }, 2000)
+                setIdTargetAnswer(null);
             }
-            setIdTargetAnswer(null);
         }
     }, [idTargetAnswer, listAnswers]);
 
