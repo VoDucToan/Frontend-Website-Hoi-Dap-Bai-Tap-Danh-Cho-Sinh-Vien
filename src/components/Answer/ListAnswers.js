@@ -182,7 +182,7 @@ const ListAnswers = (props) => {
                 <Editor getContentEditor={getContentEditor} id={0} getPlainTextEditor={getPlainTextEditor}
                     resetPage={resetPage} initialHtml={""} initialHeight={"210px"} />
                 <UploadAndDisplayImage getImage={getImage} resetPage={resetPage} isMultiple={true} />
-                <button className="btn btn-primary" onClick={() => createAnswer()}>Gửi câu trả lời của bạn</button>
+                <button className="btn btn-primary mt-3" onClick={() => createAnswer()}>Gửi câu trả lời của bạn</button>
             </div>
         </div>
     )

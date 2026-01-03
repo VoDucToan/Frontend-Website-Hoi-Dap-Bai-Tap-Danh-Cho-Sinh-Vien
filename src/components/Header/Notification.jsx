@@ -8,6 +8,7 @@ import { getListNotificationsByUser, markAllRead, readNotification, unreadNotifi
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { LuMailOpen } from "react-icons/lu";
+import socket from '../../utils/Socket/Socket';
 
 const Notification = () => {
     const idUser = useSelector(state => state.auth.user.id);
@@ -28,6 +29,19 @@ const Notification = () => {
     useEffect(() => {
         fetchListNotifications();
     }, [idUser, unRead])
+
+    useEffect(() => {
+        socket.emit('join_notifications', idUser);
+        socket.on("new_notification", (payload) => {
+            if (payload) {
+                fetchListNotifications();
+            }
+        });
+
+        return () => {
+            socket.off("new_notification");
+        };
+    }, []);
 
     const handleInbox = async (isRead, idNotification) => {
         if (isRead) {
