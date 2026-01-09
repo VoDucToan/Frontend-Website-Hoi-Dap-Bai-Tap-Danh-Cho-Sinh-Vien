@@ -333,10 +333,10 @@ function ModalReviewEditQuestion(props) {
                         (
                             <>
                                 <Button variant="success" onClick={() => handleApprove()}>
-                                    Approve
+                                    Chấp nhận
                                 </Button>
                                 <Button variant="danger" onClick={() => handleReject()}>
-                                    Reject
+                                    Từ chối
                                 </Button>
                             </>
                         )}

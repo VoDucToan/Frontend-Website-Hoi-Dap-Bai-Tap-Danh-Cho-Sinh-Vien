@@ -45,11 +45,13 @@ const DetailQuestion = (props) => {
             </div>
             <div className="detail-question">
                 <div className="content-question" id="id-content-question"></div>
-                {imagesPost && imagesPost.length > 0 && imagesPost.map((image, index) => {
-                    return (
-                        <img src={image.file_name} className='img-thumbnail' key={index} />
-                    )
-                })}
+                <div className="mb-3">
+                    {imagesPost && imagesPost.length > 0 && imagesPost.map((image, index) => {
+                        return (
+                            <img src={image.file_name} className='img-thumbnail' key={index} />
+                        )
+                    })}
+                </div>
                 <ListTags listTags={listTagsByQuestion} />
                 <Signature idAuthorEdited={idAuthorEdited} idAuthorAsked={idAuthorAsked} askedTime={askedTime}
                     editedTime={editedTime} idPost={idPost} previousEditId={previousEditId}

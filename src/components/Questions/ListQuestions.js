@@ -316,7 +316,7 @@ const ListQuestions = (props) => {
                             <div>
                                 <button type="button" className="btn btn-primary me-1"
                                     onClick={() => handleFilterQuestions()}>Lọc</button>
-                                <button type="button" className="btn btn-secondary">Lưu tùy chỉnh lọc</button>
+                                {/* <button type="button" className="btn btn-secondary">Lưu tùy chỉnh lọc</button> */}
                             </div>
 
                             <button type="button" className="btn btn-light ms-auto"
@@ -332,7 +332,7 @@ const ListQuestions = (props) => {
                         <MetaQuestion idQuestion={question.id} idUser={question.created_by_user_id}
                             titleQuestion={question.post_title} questionAskedTime={question.askedTime}
                             previewContent={question.post_plain_details} key={question.id}
-                            idAcceptedAnswer={question.accepted_answer_id} />
+                            idAcceptedAnswer={question.accepted_answer_id} postType={question.post_type_id} />
                     )
                 })}
             <ReactPaginate
